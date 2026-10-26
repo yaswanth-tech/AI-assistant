@@ -1,0 +1,31 @@
+{
+  "name": "ai-campus-assistant-mern",
+  "version": "2.0.0",
+  "description": "AI Campus Assistant - MERN Stack with RAG Pipeline, Multi-Agent WebSocket Architecture & Dual LLM Engine (OpenAI / LLaMA2 / Ollama)",
+  "scripts": {
+    "start": "node server/src/server.js",
+    "server": "node server/src/server.js",
+    "client": "npm run dev --prefix client",
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "dev": "npm run server"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongoose": "^8.2.1",
+    "openai": "^4.28.4",
+    "ws": "^8.16.0"
+  },
+  "keywords": [
+    "mern",
+    "rag",
+    "multi-agent",
+    "websocket",
+    "llama2",
+    "ollama",
+    "openai"
+  ],
+  "author": "yaswanth-tech",
+  "license": "ISC"
+}
