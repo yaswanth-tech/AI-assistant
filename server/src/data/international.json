@@ -1,107 +1,81 @@
 {
-    "InternationalFees": [
-      {
-        "Program": "IFP (International Foundation Programme)",
-        "TuitionFees": "£3,600",
-        "AdminFees": "£400",
-        "FullPayment": "£4,000",
-        "InstallmentNonRefundableDeposit": "£2,200",
-        "Installment": [
-          "£900",
-          "£900"
-        ]
-      },
-      {
-        "Program": "BA Business Management",
-        "TuitionFees": "£5,400",
-        "AdminFees": "£400",
-        "FullPayment": "£5,800",
-        "InstallmentNonRefundableDeposit": "£2,800",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-      {
-        "Program": "BSc Psychology with Counseluling Skills",
-        "TuitionFees": "£5,400",
-        "AdminFees": "£400",
-        "FullPayment": "£5,800",
-        "InstallmentNonRefundableDeposit": "£2,800",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-
-      {
-        "Program": "BA Accounting & Finance",
-        "TuitionFees": "£5,400",
-        "AdminFees": "£400",
-        "FullPayment": "£5,800",
-        "InstallmentNonRefundableDeposit": "£2,800",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-
-      {
-        "Program": "BA Advertising PR & Branding",
-        "TuitionFees": "£6,000",
-        "AdminFees": "£400",
-        "FullPayment": "£6,400",
-        "InstallmentNonRefundableDeposit": "£3,400",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-      {
-        "Program": "Computer Science",
-        "TuitionFees": "£6,000",
-        "AdminFees": "£400",
-        "FullPayment": "£6,400",
-        "InstallmentNonRefundableDeposit": "£3,400",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-      {
-        "Program": "Law Programs",
-        "TuitionFees": "£6,000",
-        "AdminFees": "£400",
-        "FullPayment": "£6,400",
-        "InstallmentNonRefundableDeposit": "£3,400",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-      {
-        "Program": "Advanced Entry and Top-Up Programs",
-        "TuitionFees": "£6,000",
-        "AdminFees": "£400",
-        "FullPayment": "£6,400",
-        "InstallmentNonRefundableDeposit": "£3,400",
-        "Installment": [
-          "£1,500",
-          "£1,500"
-        ]
-      },
-      {
-        "Program": "Postgraduate",
-        "TuitionFees": "£7,020",
-        "AdminFees": "£400",
-        "FullPayment": "£7,420",
-        "InstallmentNonRefundableDeposit": "£3,820",
-        "Installment": [
-          "£1,800",
-          "£1,800"
-        ]
-      }
-
-    ]
-  }
-  
+  "InternationalFees": [
+    {
+      "Program": "B.Tech Computer Science & Engineering (AI & ML / Data Science / Cyber Security)",
+      "TuitionFees": "₹3,60,000 / year",
+      "AdminFees": "₹25,000 (One-time Admission Fee)",
+      "FullPayment": "₹3,85,000 (Year 1)",
+      "InstallmentNonRefundableDeposit": "₹50,000",
+      "Installment": [
+        "₹1,80,000 (Semester 1)",
+        "₹1,80,000 (Semester 2)"
+      ]
+    },
+    {
+      "Program": "MBA (General / Business Analytics / Financial Services)",
+      "TuitionFees": "₹7,50,000 / year (₹15,00,000 Total 2-Year Program)",
+      "AdminFees": "₹50,000 (Admission & Corporate Relations Fee)",
+      "FullPayment": "₹8,00,000 (Year 1)",
+      "InstallmentNonRefundableDeposit": "₹1,00,000",
+      "Installment": [
+        "₹3,50,000 (Term 1 & 2)",
+        "₹3,50,000 (Term 3 & 4)"
+      ]
+    },
+    {
+      "Program": "BBA (Hons) / BBA (E-Commerce & Digital Marketing)",
+      "TuitionFees": "₹3,25,000 / year",
+      "AdminFees": "₹25,000 (One-time Admission Fee)",
+      "FullPayment": "₹3,50,000 (Year 1)",
+      "InstallmentNonRefundableDeposit": "₹50,000",
+      "Installment": [
+        "₹1,62,500 (Semester 1)",
+        "₹1,62,500 (Semester 2)"
+      ]
+    },
+    {
+      "Program": "B.Des (Fashion Design / Industrial / Interior / Communication Design)",
+      "TuitionFees": "₹3,50,000 / year",
+      "AdminFees": "₹25,000 (One-time Studio & Lab Kit)",
+      "FullPayment": "₹3,75,000 (Year 1)",
+      "InstallmentNonRefundableDeposit": "₹50,000",
+      "Installment": [
+        "₹1,75,000 (Semester 1)",
+        "₹1,75,000 (Semester 2)"
+      ]
+    },
+    {
+      "Program": "BA LLB (Hons) / BBA LLB (Hons) - 5 Years Integrated Law",
+      "TuitionFees": "₹2,75,000 / year",
+      "AdminFees": "₹20,000 (Bar Council Registration & Moot Court)",
+      "FullPayment": "₹2,95,000 (Year 1)",
+      "InstallmentNonRefundableDeposit": "₹40,000",
+      "Installment": [
+        "₹1,37,500 (Semester 1)",
+        "₹1,37,500 (Semester 2)"
+      ]
+    },
+    {
+      "Program": "B.Arch (Bachelor of Architecture - 5 Years COA Approved)",
+      "TuitionFees": "₹2,85,000 / year",
+      "AdminFees": "₹25,000 (Studio & Material Bench)",
+      "FullPayment": "₹3,10,000 (Year 1)",
+      "InstallmentNonRefundableDeposit": "₹40,000",
+      "Installment": [
+        "₹1,42,500 (Semester 1)",
+        "₹1,42,500 (Semester 2)"
+      ]
+    },
+    {
+      "Program": "Ph.D. Doctoral Research Programs (Full-time with Fellowship)",
+      "TuitionFees": "₹50,000 / year",
+      "AdminFees": "₹15,000 (One-time Library & Thesis Processing)",
+      "FullPayment": "₹65,000",
+      "InstallmentNonRefundableDeposit": "₹25,000",
+      "Installment": [
+        "Monthly Stipend: ₹25,000 - ₹35,000 awarded to scholars",
+        "Free Accommodation & Research Grants"
+      ]
+    }
+  ]
+}

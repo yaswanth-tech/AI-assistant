@@ -9,6 +9,8 @@ const ConversationModel = require('../models/Conversation');
 const { sendNotification, getRecentNotifications, broadcast } = require('../services/notificationService');
 const { getProviderStatus, setProvider } = require('../services/llmService');
 const { isConnected } = require('../models/db');
+const { getWeather } = require('../services/weatherService');
+const { searchWeb } = require('../services/webSearchService');
 
 // Multer memory storage for file uploads
 const upload = multer({
@@ -297,6 +299,28 @@ router.post('/notifications', async (req, res) => {
     }
     const notif = await sendNotification({ title, message, type, agent });
     res.json({ success: true, notification: notif });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Weather API Endpoint
+router.get('/weather', async (req, res) => {
+  try {
+    const loc = req.query.location || req.query.q || 'Hyderabad';
+    const weather = await getWeather(loc);
+    res.json(weather);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Live Web Search Endpoint
+router.get('/search', async (req, res) => {
+  try {
+    const query = req.query.q || req.query.query || 'Woxsen University';
+    const results = await searchWeb(query);
+    res.json(results);
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

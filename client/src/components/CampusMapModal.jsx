@@ -5,13 +5,13 @@ export default function CampusMapModal({ isOpen, onClose, selectedLocation, allL
   if (!isOpen) return null;
 
   const [activeLoc, setActiveLoc] = useState(selectedLocation || allLocations[0] || {
-    LocationName: 'Campus Library',
-    Coordinates: { lat: -20.280528, lng: 57.394936 }
+    LocationName: 'Vithal Gandhi Central Library',
+    Coordinates: { lat: 17.6539, lng: 77.9221 }
   });
 
   const [directionsActive, setDirectionsActive] = useState(false);
 
-  const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${activeLoc?.Coordinates?.lat || -20.280528},${activeLoc?.Coordinates?.lng || 57.394936}`;
+  const googleMapsDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${activeLoc?.Coordinates?.lat || 17.6539},${activeLoc?.Coordinates?.lng || 77.9221}`;
 
   return (
     <div style={{
@@ -65,7 +65,7 @@ export default function CampusMapModal({ isOpen, onClose, selectedLocation, allL
                 Campus Navigation & Google Maps GPS
               </h2>
               <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                Middlesex University Mauritius • Cascavelle Campus
+                Woxsen University • Hyderabad Residential Campus
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function CampusMapModal({ isOpen, onClose, selectedLocation, allL
                 width="100%"
                 height="100%"
                 style={{ border: 'none', filter: 'contrast(1.05)' }}
-                src={`https://www.openstreetmap.org/export/embed.html?bbox=57.385%2C-20.290%2C57.405%2C-20.270&layer=mapnik&marker=${activeLoc?.Coordinates?.lat}%2C${activeLoc?.Coordinates?.lng}`}
+                src={`https://www.openstreetmap.org/export/embed.html?bbox=77.910%2C17.640%2C77.935%2C17.665&layer=mapnik&marker=${activeLoc?.Coordinates?.lat || 17.6534}%2C${activeLoc?.Coordinates?.lng || 77.9224}`}
               />
 
               {directionsActive && (
@@ -165,7 +165,7 @@ export default function CampusMapModal({ isOpen, onClose, selectedLocation, allL
                   fontWeight: '600',
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
                 }}>
-                  <Navigation size={14} /> Walking Route: ~2 minutes from Main Archway Entrance
+                  <Navigation size={14} /> Walking Route: ~2 - 4 minutes along campus central avenue
                 </div>
               )}
             </div>
@@ -187,7 +187,7 @@ export default function CampusMapModal({ isOpen, onClose, selectedLocation, allL
                   Selected: {activeLoc?.LocationName}
                 </div>
                 <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
-                  GPS: <code>{activeLoc?.Coordinates?.lat}, {activeLoc?.Coordinates?.lng}</code> • Cascavelle Campus
+                  GPS: <code>{activeLoc?.Coordinates?.lat}, {activeLoc?.Coordinates?.lng}</code> • Woxsen Campus, Hyderabad
                 </div>
               </div>
 

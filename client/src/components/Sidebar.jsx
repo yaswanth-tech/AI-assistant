@@ -90,7 +90,7 @@ export default function Sidebar({
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
               <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '-0.3px' }}>
-                MDX Campus AI
+                Woxsen AI Assistant
               </span>
             </div>
 

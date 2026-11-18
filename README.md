@@ -1,9 +1,11 @@
-# AI Campus Assistant 🎓🤖
+# AI Assistant | Woxsen University & General Intelligence 🎓🤖
 
 [![Stack: MERN](https://img.shields.io/badge/Stack-MERN-green.svg)](https://react.dev)
 [![AI: RAG Pipeline](https://img.shields.io/badge/AI-RAG_Pipeline-blue.svg)](https://github.com/yaswanth-tech/AI-assistant)
 [![Engine: OpenAI & LLaMA2](https://img.shields.io/badge/Engine-OpenAI_%2F_LLaMA2-purple.svg)](https://ollama.ai)
 [![Real-Time: WebSocket](https://img.shields.io/badge/RealTime-WebSocket-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+[![Live Weather: Open--Meteo](https://img.shields.io/badge/Weather-Open--Meteo_Live-yellow.svg)](https://open-meteo.com)
+[![Web Search: Live Index](https://img.shields.io/badge/WebSearch-DuckDuckGo_%2F_Wikipedia-red.svg)](https://duckduckgo.com)
 [![Database: MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen.svg)](https://www.mongodb.com)
 [![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel_Live-black?logo=vercel)](https://ai-campus-assistant-ten.vercel.app)
 
@@ -20,54 +22,65 @@
 > - **Bullet 1**: Built a conversational AI assistant using a RAG pipeline and prompt engineering to provide context-aware support for campus-related queries.
 > - **Bullet 2**: Implemented real-time notification pipelines and WebSocket-based multi-agent communication for efficient, real-time information delivery.
 
-**AI Campus Assistant** is an intelligent, full-stack conversational AI platform built on the **MERN** stack (MongoDB, Express, React, Node.js) designed to provide 24/7 academic, administrative, and campus life support. It combines a **Retrieval-Augmented Generation (RAG)** pipeline, **multi-agent WebSocket orchestration**, and a ChatGPT-style modern interface featuring conversation memory, voice recognition, Google Calendar/Maps integrations, document analysis, and academic productivity tools.
+**AI Assistant** is a comprehensive, full-stack conversational intelligence platform built on the **MERN** stack (MongoDB, Express, React, Node.js). It seamlessly combines the general-purpose reasoning of **ChatGPT** with deep, specialized capabilities for **Woxsen University** (Hyderabad, India).
+
+Users can ask **ANY** question naturally—ranging from programming, mathematics, science, live weather, and web search, to specialized Woxsen admissions, tuition fee tables, Bloomberg Finance Lab navigation, and faculty advising sessions—without learning rigid keywords or predefined commands.
 
 ---
 
 ## ✨ Key Features & Capabilities
 
-### 1. 🧠 Smart Conversational AI (No Rigid Keywords)
-- **Natural Language Understanding**: Powered by OpenAI (`gpt-4o-mini`, `gpt-3.5-turbo`) and local open-source models (**LLaMA2** via **Ollama**), plus an intelligent grounded fallback engine.
-- **Dynamic Prompt Engineering**: Injects campus truth and context dynamically into system prompts to eliminate hallucinations and deliver precise, context-aware answers.
-- **Tool Calling & Interactive Cards**: The AI dynamically invokes tools to generate rich UI cards:
-  - 🗺️ **Interactive Campus Maps & Google Maps Directions**
-  - 📅 **Google Calendar Booking URLs & `.ics` Downloads**
-  - ✉️ **Academic Email Drafting**
-  - 📚 **Personalized Study Plans**
-  - 📄 **Document Summarization Cards**
-  - 💳 **Tuition Fee & Installment Breakdowns**
+### 1. 🧠 General-Purpose Intelligence (ChatGPT-Style)
+- **Ask Anything Naturally**: Handles queries across software engineering, programming (Python, JavaScript, React, C++, SQL), mathematics, physics, biology, philosophy, creative writing, and daily life.
+- **Deep Explanations & Analogies**: Solves complex concepts (e.g., Quantum Computing, Neural Network Backpropagation, Dynamic Programming) with intuitive real-world analogies and LaTeX math.
+- **Natural Chit-Chat & Humor**: Greets users warmly, answers casual conversation, tells jokes, and assists with creative brainstorming.
 
-### 2. 🗂️ Conversation Memory & Session History
-- **Multi-Session Management**: Start new chats, switch between past conversations, rename topics, or delete individual chats.
-- **Context-Aware Follow-ups**: The AI maintains multi-turn conversation memory, allowing users to ask follow-up questions seamlessly (e.g., *"Can you draft an email to the admissions officer about the fees we just discussed?"*).
-- **Dual Persistence**: Stored reliably in **MongoDB** with an automatic in-memory fallback for zero-configuration local runs.
+### 2. ☁️ Real-Time Live Weather Integration
+- **Live Open-Meteo Satellite API**: Integrates real-time meteorological satellite feeds for **Hyderabad** (or any requested city worldwide).
+- **Comprehensive Weather Metrics**: Current temperature in °C and °F, apparent "feels-like" temperature, weather conditions with icons, relative humidity percentage, wind speed, and 3-day daily forecasts.
+- **Interactive Weather Card**: Renders high-contrast live weather cards with metric gauges and forecast tiles.
 
-### 3. 🎙️ Voice Assistant (Speech-to-Text & Text-to-Speech)
-- **Microphone STT**: Instant speech recognition via the Web Speech API with a dynamic soundwave visualizer canvas.
-- **Natural AI Speech (TTS)**: Plays AI responses aloud using browser speech synthesis, complete with play/pause controls, voice rate adjustments, accent selection, and an auto-speak toggle.
+### 3. 🌐 Real-Time Web Search & Verified Citations
+- **Live Knowledge Retrieval**: Integrates DuckDuckGo Instant Answers and Wikipedia Knowledge APIs to fetch verified, current facts, breaking technology updates, and news.
+- **Citation Chips & Source Links**: Embeds direct URLs and verified source previews into responses to prevent hallucinations on real-time queries.
 
-### 4. 🏫 Comprehensive Campus Knowledge (RAG Engine)
-- **TF-IDF & Cosine Similarity Engine**: Chunks campus corpus documents (admissions, degrees, fee tables, library services, examination schedules, accommodation, campus facilities) and retrieves top-*k* relevant context chunks.
-- Covers **Middlesex University Mauritius** undergraduate and postgraduate programs, tuition fees in MUR, scholarship criteria, faculty contacts, academic calendars, and campus facilities.
-- **RAG Knowledge Base Explorer**: Built-in visual diagnostic inspector to search documents and inspect chunk similarity scores in real time.
+### 4. 🏫 Specialized Woxsen University Knowledge (RAG Pipeline)
+- **Campus Knowledge Corpus**: Grounded knowledge over Woxsen University's 200-acre residential eco-friendly campus in Kamkole, Sadasivpet, Sangareddy District, Hyderabad, Telangana.
+- **7 Constituent Schools**:
+  - School of Technology (B.Tech in CSE: AI & ML, Data Science, Cyber Security, IoT, Blockchain, Robotics)
+  - School of Business (MBA, BBA Hons, Business Analytics, Financial Services)
+  - School of Arts & Design (B.Des in Fashion, Interior, Industrial, Communication Design)
+  - School of Architecture & Planning (B.Arch, M.Arch)
+  - School of Law (BA LLB, BBA LLB, LLM)
+  - School of Liberal Arts & Humanities (BA Hons)
+  - School of Sciences (B.Sc Hons, Data Science)
+- **Fee Structures & Scholarships**: Complete annual tuition, admission fees, and installment schedules in INR, plus Woxsen Merit Scholarships (up to 50% tuition waiver).
+- **World-Class Facilities**: Vithal Gandhi Central Library (70,000 sq.ft), Bloomberg Finance Lab (20 terminals), AI & Robotics Lab, Trade Tower Startup Incubator (₹1 Cr seed fund), and "The League" Sports Arena (ICC-standard cricket ground, FIFA football turf, Olympic pool, synthetic tennis courts).
 
-### 5. 🌐 Google Integrations
-- **Google Maps Navigation**: Instant links to live Google Maps turn-by-turn walking and driving directions for every campus landmark (Admissions, IT Labs, Library, Cafeteria, Sports Complex).
-- **Google Calendar Scheduling**: One-click **Add to Google Calendar** event URLs + standard RFC-5545 **`.ics` calendar file downloads** for Apple Calendar, Outlook, and Google Calendar.
+### 5. 🛠️ AI Tool Calling & Interactive UI Cards
+The assistant dynamically executes tools to generate rich interactive widgets:
+- ☁️ **Live Weather Cards**: Temperature, feels like, humidity, wind, and 3-day forecast.
+- 🌐 **Web Search Cards**: Direct answers, source snippets, and external citation links.
+- 🗺️ **Campus Map & Google Maps Navigation**: GPS coordinates and direct turn-by-turn walking/driving routes.
+- 📅 **Google Calendar Booking & `.ics`**: One-click Google Calendar sync and RFC-5545 `.ics` file downloads.
+- ✉️ **Academic Email Drafter**: Professional emails with instant `mailto:` launch and copy actions.
+- 📚 **Study Planner**: Structured revision timetables with Pomodoro pacing.
+- 📄 **Document Summarizer**: PDF parsing with word counts and bulleted takeaways.
+- 💳 **Tuition Fee Cards**: Official fee schedules with deposit terms and installment breakdowns.
 
-### 6. 📄 Document Upload & Summarization
-- Upload PDF or text documents (syllabi, lecture notes, admission letters).
-- Text parsed via `pdf-parse` on the backend, summarized into key takeaways, and indexed for immediate conversational inquiry.
+### 6. 🗂️ Conversation Memory & Multi-Session History
+- **ChatGPT-Style Sidebar**: Start new chats, search past conversations, rename topics, delete individual sessions, or clear all chats.
+- **Multi-Turn Context**: Remembers previous questions and maintains context across follow-ups.
+- **Dual Persistence**: Stored in **MongoDB** with automatic fallback to an in-memory database.
 
-### 7. 🛠️ Academic Productivity Suite
-- **Email Drafter**: Quickly compose formal academic emails to professors, registrars, or finance departments with one-click `mailto:` launch or chat insertion.
-- **Study Planner**: Generates structured, week-by-week study milestones, revision strategies, and daily checklists for any module.
-- **360° Virtual Campus Tour**: Direct link to the official interactive campus tour.
+### 7. 🎙️ Voice Assistant (STT & TTS)
+- **Microphone STT**: Instant speech recognition via the Web Speech API with an active soundwave visualizer canvas.
+- **AI Voice Responses (TTS)**: Plays AI responses aloud with play/stop controls, speech rate slider, voice selection, and an auto-speak toggle.
 
-### 8. 🎨 Modern ChatGPT-Style UI & Theming
-- **Dark & Light Mode**: Seamless theme switching with high-contrast, modern glassmorphism styling.
-- **Markdown & Code Rendering**: Full GitHub Flavored Markdown (GFM) support with syntax-highlighted code blocks, tables, and one-click copy buttons.
-- **Responsive Drawer**: Fully optimized for mobile screens, tablets, and desktop displays.
+### 8. 🎨 Modern Dark/Light Interface
+- **Theme Switcher**: Dark and light modes with glassmorphism styling.
+- **Markdown & Code Highlighting**: Syntax-highlighted code blocks with one-click copy buttons and GFM tables.
+- **Mobile Responsive Drawer**: Fully optimized for mobile screens, tablets, and desktop displays.
 
 ---
 
@@ -78,7 +91,7 @@
                                   │      React 18 Frontend (Vite)       │
                                   │  - ChatGPT-Style Chat & Sidebar     │
                                   │  - Speech STT / TTS & Visualizer    │
-                                  │  - PDF Upload & Document Analyzer   │
+                                  │  - Live Weather & Search Cards      │
                                   │  - Google Calendar & Map Modals     │
                                   └──────────────────┬──────────────────┘
                                                      │
@@ -88,39 +101,30 @@
                                   │       Node.js / Express Server      │
                                   │  - WebSocket Pipeline Broadcaster   │
                                   │  - Multi-Agent Orchestrator         │
+                                  │  - Weather & Web Search Services    │
                                   │  - Multer + pdf-parse Document Extr │
                                   └───────┬──────────────────────┬──────┘
                                           │                      │
                   ┌───────────────────────┴────────┐             └──────────────────────────┐
                   ▼                                ▼                                        ▼
   ┌─────────────────────────────┐   ┌─────────────────────────────┐          ┌─────────────────────────────┐
-  │   Multi-Agent Network       │   │        RAG Pipeline         │          │     Persistent Storage      │
-  │ - Supervisor Agent          │   │ - Vector Similarity Engine  │          │ - MongoDB Database          │
-  │ - Admissions & Fees Agent   │   │ - TF-IDF Chunk Indexer      │          │ - Dual Persistence Models:  │
-  │ - Navigation GPS Agent      │   │ - Context Injection Engine  │          │   Conversations,            │
-  │ - Appointments Agent        │   │ - Campus Knowledge Corpus   │          │   Appointments,             │
-  │ - RAG Knowledge Agent       │   └──────────────┬──────────────┘          │   Notifications             │
+  │   Multi-Agent & Tool Layer  │   │     Woxsen RAG Pipeline     │          │     Persistent Storage      │
+  │ - Live Weather Service      │   │ - Vector Cosine Similarity  │          │ - MongoDB Database          │
+  │ - Web Search (DuckDuckGo)   │   │ - TF-IDF Chunk Indexer      │          │ - Dual Persistence Models:  │
+  │ - Campus Navigation GPS     │   │ - Dynamic Context Injection │          │   Conversations,            │
+  │ - Appointments & Calendar   │   │ - 200-Acre Campus Corpus    │          │   Appointments,             │
+  │ - Email & Study Planners    │   └──────────────┬──────────────┘          │   Notifications             │
   └──────────────┬──────────────┘                  │                         └─────────────────────────────┘
                  │                                 │
                  └─────────────────┬───────────────┘
                                    ▼
                    ┌───────────────────────────────┐
                    │       LLM Engine Layer        │
-                   │ - OpenAI API (GPT-3.5/4o)     │
+                   │ - OpenAI API (GPT-4o-mini)    │
                    │ - Ollama (LLaMA2)             │
-                   │ - Context Grounded Fallback   │
+                   │ - General AI & Campus Engine  │
                    └───────────────────────────────┘
 ```
-
----
-
-## 👥 Multi-Agent WebSocket Architecture
-
-1. **Supervisor / Router Agent**: Analyzes user intent, checks context history, and delegates subtasks with zero latency.
-2. **Campus Knowledge (RAG) Agent**: Performs semantic retrieval across campus guides, admissions guidelines, and student handbooks.
-3. **Admissions & Finance Agent**: Resolves international/domestic fee tables, deposit requirements, and installment plans.
-4. **Campus Navigation Agent**: Pinpoints geospatial coordinates and renders interactive campus radar maps with direct Google Maps routes.
-5. **Academic Appointments Agent**: Validates advisor availability and writes bookings directly to MongoDB while generating Google Calendar links and `.ics` files.
 
 ---
 
@@ -148,7 +152,7 @@ npm --prefix client install
 ```
 
 ### 3. Environment Variables (Optional)
-Create a `.env` file in `server/.env` (or configure in your deployment dashboard):
+Create a `.env` file in `server/.env`:
 ```env
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/campus_assistant
@@ -157,7 +161,7 @@ OLLAMA_HOST=http://localhost:11434
 OLLAMA_MODEL=llama2
 DEFAULT_LLM_PROVIDER=hybrid
 ```
-> **Note**: Even without an OpenAI API key or Ollama installed, the assistant runs out of the box using its built-in context-grounded AI engine!
+> **Zero Configuration Required**: Even without an OpenAI API key or Ollama installed, the assistant runs out of the box with full general intelligence, live weather, real web search, and Woxsen University capabilities!
 
 ### 4. Run the Project
 #### Single Command (Production Server):
@@ -185,7 +189,9 @@ npm run client
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/api/chat` | Send a chat message with conversation memory and attachment support |
+| `POST` | `/api/chat` | Send a chat message with conversation memory, attachments, and tool calling |
+| `GET` | `/api/weather?location=<city>` | Real-time weather, temperature, conditions & 3-day forecast |
+| `GET` | `/api/search?q=<query>` | Real-time web search with verified citations and snippets |
 | `GET` | `/api/conversations` | Retrieve all saved conversation sessions |
 | `GET` | `/api/conversations/:id` | Fetch message history for a specific conversation |
 | `POST` | `/api/conversations` | Create a new conversation session |
@@ -197,7 +203,7 @@ npm run client
 | `POST` | `/api/appointments` | Book appointment with Google Calendar link generation |
 | `GET` | `/api/appointments/:id/ics` | Download RFC-5545 `.ics` iCalendar file |
 | `GET` | `/api/rag/query?q=<query>&k=4` | Semantic RAG retrieval diagnostic with similarity scores |
-| `GET` | `/api/locations` | Campus buildings, coordinates & Google Maps URLs |
+| `GET` | `/api/locations` | Woxsen campus buildings, coordinates & Google Maps URLs |
 | `GET` | `/api/fees` | Program tuition fee and installment schedule tables |
 | `GET` | `/api/notifications` | Real-time campus notifications feed |
 | `POST` | `/api/notifications` | Broadcast announcement via WebSocket |
@@ -218,12 +224,8 @@ The application is deployed on Vercel with serverless API functions and Vite sta
    ```bash
    vercel --prod
    ```
-3. **Environment Variables on Vercel**:
-   In your Vercel Project Settings > Environment Variables:
-   - `OPENAI_API_KEY`: *(Optional)* Your OpenAI API Key.
-   - `MONGODB_URI`: *(Optional)* Your MongoDB Atlas connection URI.
 
-**Live Vercel URL**: [https://ai-campus-assistant-ten.vercel.app](https://ai-campus-assistant-ten.vercel.app)
+**Live Production URL**: [https://ai-campus-assistant-ten.vercel.app](https://ai-campus-assistant-ten.vercel.app)
 
 ---
 

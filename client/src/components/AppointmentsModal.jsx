@@ -231,7 +231,7 @@ export default function AppointmentsModal({ isOpen, onClose }) {
                 <input
                   type="email"
                   required
-                  placeholder="e.g. alex@live.mdx.ac.mu"
+                  placeholder="e.g. alex@woxsen.edu.in"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   style={{
@@ -250,7 +250,7 @@ export default function AppointmentsModal({ isOpen, onClose }) {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
                   <label style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
-                    Department
+                    Department / Faculty
                   </label>
                   <select
                     value={formData.department}
@@ -266,12 +266,14 @@ export default function AppointmentsModal({ isOpen, onClose }) {
                       outline: 'none'
                     }}
                   >
-                    <option value="Admissions Office">Admissions Office</option>
-                    <option value="Computer Science Faculty">Computer Science Faculty</option>
-                    <option value="Business & Law Faculty">Business & Law Faculty</option>
-                    <option value="Student Finance & Visa">Student Finance & Visa</option>
-                    <option value="IT Support Desk">IT Support Desk</option>
-                    <option value="Career & Wellness Counselling">Career & Wellness Counselling</option>
+                    <option value="Admissions Counselling">Admissions Counselling</option>
+                    <option value="School of Technology (B.Tech / AI & ML)">School of Technology (B.Tech / AI & ML)</option>
+                    <option value="School of Business (MBA / BBA)">School of Business (MBA / BBA)</option>
+                    <option value="School of Arts & Design">School of Arts & Design</option>
+                    <option value="School of Law">School of Law</option>
+                    <option value="Trade Tower Startup Incubation">Trade Tower Startup Incubation</option>
+                    <option value="Student Financial Aid & Scholarships">Student Financial Aid & Scholarships</option>
+                    <option value="The League Sports Administration">The League Sports Administration</option>
                   </select>
                 </div>
 

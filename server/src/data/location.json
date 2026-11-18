@@ -1,50 +1,62 @@
 [
   {
-      "LocationName": "Archway",
-      "Coordinates": {"lat": -20.280553, "lng": 57.395167}
+    "LocationName": "Vithal Gandhi Central Library",
+    "Coordinates": { "lat": 17.6539, "lng": 77.9221 },
+    "Category": "Academic & Research",
+    "Description": "70,000 sq. ft. multi-story Central Library with 30,000+ volumes, IEEE/EBSCO digital repositories, and quiet study pods."
   },
   {
-      "LocationName": "Admin Building",
-      "Coordinates": {"lat": -20.280553, "lng": 57.395167}
+    "LocationName": "Bloomberg Finance Lab & Trade Tower",
+    "Coordinates": { "lat": 17.6542, "lng": 77.9215 },
+    "Category": "Innovation & Incubation",
+    "Description": "20 dedicated Bloomberg terminals for live financial market intelligence and Trade Tower startup incubation hub."
   },
   {
-      "LocationName": "Entrance",
-      "Coordinates": {"lat": -20.280309, "lng": 57.395255}
+    "LocationName": "School of Technology & AI Robotics Lab",
+    "Coordinates": { "lat": 17.6530, "lng": 77.9230 },
+    "Category": "Engineering & Technology",
+    "Description": "Advanced computing clusters, autonomous robotics workstations, IoT sensor testbeds, and GPU deep learning rigs."
   },
   {
-      "LocationName": "Library",
-      "Coordinates": {"lat": -20.280528, "lng": 57.394936}
+    "LocationName": "School of Business",
+    "Coordinates": { "lat": 17.6535, "lng": 77.9210 },
+    "Category": "Management & Business",
+    "Description": "Executive lecture theatres, Harvard case-study rooms, Behavioral Science Lab, and corporate simulation halls."
   },
   {
-      "LocationName": "Print Pod",
-      "Coordinates": {"lat": -20.280528, "lng": 57.394936}
+    "LocationName": "School of Arts & Design Studios",
+    "Coordinates": { "lat": 17.6528, "lng": 77.9218 },
+    "Category": "Design & Architecture",
+    "Description": "3D rapid prototyping, industrial ceramics, laser cutting, fashion pattern labs, and interior architecture bays."
   },
   {
-      "LocationName": "IT Support",
-      "Coordinates": {"lat": -20.280791, "lng": 57.395543}
+    "LocationName": "The League - Sports Arena",
+    "Coordinates": { "lat": 17.6515, "lng": 77.9245 },
+    "Category": "Athletics & Recreation",
+    "Description": "ICC-standard cricket ground, FIFA certified football turf, Olympic-length pool, 8 synthetic tennis courts, and indoor courts."
   },
   {
-      "LocationName": "Robotic Lab",
-      "Coordinates": {"lat": -20.280829, "lng": 57.395387}
+    "LocationName": "Main Admissions & Administrative Block",
+    "Coordinates": { "lat": 17.6548, "lng": 77.9205 },
+    "Category": "Administration & Services",
+    "Description": "Admissions Counselling Centre, Registrar Office, Student Financial Aid, and Vice Chancellor's Secretariat."
   },
   {
-    "LocationName": "CG01",
-    "Coordinates": {"lat": -20.280829, "lng": 57.395387}
+    "LocationName": "Student Residences & Hostels",
+    "Coordinates": { "lat": 17.6520, "lng": 77.9200 },
+    "Category": "Accommodation",
+    "Description": "Fully air-conditioned residential towers with ensuite bathrooms, Wi-Fi, recreational lounges, and 24/7 security."
   },
   {
-    "LocationName": "CG02",
-    "Coordinates": {"lat": -20.280829, "lng": 57.395387}
+    "LocationName": "Central Food Court & Cafeteria",
+    "Coordinates": { "lat": 17.6538, "lng": 77.9228 },
+    "Category": "Dining & Social",
+    "Description": "Multi-cuisine dining facilities, vegetarian and non-vegetarian counters, barista cafe, and late-night bistro."
   },
   {
-    "LocationName": "CG03",
-    "Coordinates": {"lat": -20.280829, "lng": 57.395387}
-  },
-  {
-      "LocationName": "Lecture Theatres",
-      "Coordinates": {"lat": -20.280790, "lng": 57.395270}
-  },
-  {
-      "LocationName": "Employability Service",
-      "Coordinates": {"lat": -20.280465, "lng": 57.395583}
+    "LocationName": "Central Amphitheatre & Convention Hub",
+    "Coordinates": { "lat": 17.6545, "lng": 77.9225 },
+    "Category": "Culture & Events",
+    "Description": "Open-air amphitheatre with 1,000+ seating capacity hosting national conclaves, cultural fests, and musical performances."
   }
 ]

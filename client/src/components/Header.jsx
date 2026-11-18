@@ -85,7 +85,7 @@ export default function Header({
             overflow: 'hidden',
             textOverflow: 'ellipsis'
           }}>
-            {currentTitle || 'Middlesex University Mauritius Assistant'}
+            {currentTitle || 'AI Assistant | Woxsen University & Beyond'}
           </span>
         </div>
       </div>

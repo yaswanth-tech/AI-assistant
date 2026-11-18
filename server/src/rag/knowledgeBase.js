@@ -23,262 +23,233 @@ try {
   console.warn('Could not load location.json', e.message);
 }
 
-// Comprehensive RAG Knowledge Corpus Chunks
+// Comprehensive RAG Knowledge Corpus Chunks for Woxsen University, Hyderabad
 const campusKnowledgeCorpus = [
   {
-    id: 'overview-1',
+    id: 'overview-woxsen',
     category: 'About Campus',
-    title: 'Middlesex University Mauritius Overview & Accreditations',
-    content: `Middlesex University Mauritius is an international branch campus of Middlesex University London, located at Coastal Road, Cascavelle / Flic-en-Flac, Mauritius. 
-Degrees awarded are identical British qualifications accredited by the Quality Assurance Agency (QAA) in the United Kingdom. 
-The campus boasts cutting-edge computer suites, an Innovation & Robotics Lab, modern library, collaborative student commons, high-speed campus-wide Eduroam WiFi, and scenic student recreation spaces.`
+    title: 'Woxsen University Hyderabad Overview & Global Accreditations',
+    content: `Woxsen University is a premier, private 200-acre residential institution situated at Kamkole, Sadasivpet, Sangareddy District, Hyderabad, Telangana 502345, India. 
+Recognized by the UGC and approved by AICTE, Woxsen holds prestigious international accreditations and memberships including EFMD Global, AMBA (Association of MBAs), AACSB Business Education Alliance, and the Association of Commonwealth Universities (ACU).
+Known for its striking modern architecture, sustainability-first green campus, Bloomberg Finance Lab, Trade Tower startup incubator, and world-class sports arena 'The League', Woxsen ranks among the top private universities in India for technology, management, design, and architecture.`
   },
   {
-    id: 'virtual-tour-1',
-    category: 'Virtual Tour',
-    title: '360° Interactive Campus Virtual Tour',
-    content: `Experience our Cascavelle campus virtually anytime! The official 360-degree interactive tour is accessible at:
-https://app.lapentor.com/sphere/mdx-mru-virtual-tour
-Explore panoramic views of the amphitheatre, modern lecture halls, robotics lab, cafeteria, student lounge, and the main archway entrance.`
-  },
-  {
-    id: 'courses-undergrad',
+    id: 'schools-programs',
     category: 'Academic Programs',
-    title: 'Undergraduate Degree Programs (BSc & BA)',
-    content: `Undergraduate Degree Offerings (3 Years Full-Time / 4 Years with Foundation):
-1. BSc (Hons) Computer Science: Accredited by the British Computer Society (BCS). Covers full-stack software development, AI & machine learning, distributed cloud systems, cybersecurity, and algorithms.
-2. BA (Hons) Business Management: Covers global strategic management, financial analysis, marketing strategies, entrepreneurship, and organizational leadership.
-3. BSc (Hons) Psychology with Counselling Skills: Accredited by the British Psychological Society (BPS). Focuses on cognitive neuroscience, developmental psychology, mental health ethics, and therapeutic counselling skills.
-4. BA (Hons) Accounting and Finance: Dual-accredited by ACCA, CIMA, and ICAEW, providing major exemptions from professional examinations.
-5. BA (Hons) Advertising, PR and Branding: Digital brand storytelling, public relations campaigns, consumer psychology, and multimedia production.
-6. LLB (Hons) Law: Qualifying English Law degree covering constitutional law, criminal law, international commercial arbitration, and human rights.`
+    title: 'Woxsen University Schools & Degree Offerings',
+    content: `Woxsen University encompasses seven constituent schools delivering interdisciplinary, industry-aligned curricula:
+1. School of Technology: B.Tech in Computer Science & Engineering (AI & Machine Learning, Data Science, Cyber Security, IoT & Blockchain, Robotics), Ph.D. in Engineering.
+2. School of Business: MBA (General, Business Analytics, Financial Services), Executive MBA, BBA (Hons), BBA (E-Commerce & Digital Marketing), Ph.D. in Management.
+3. School of Arts & Design: B.Des (Fashion Design, Industrial Design, Interior Design, Communication Design), M.Des.
+4. School of Architecture & Planning: B.Arch (5-year Council of Architecture approved program) and M.Arch.
+5. School of Law: BA LLB (Hons), BBA LLB (Hons) 5-year integrated law, LLM.
+6. School of Liberal Arts & Humanities: BA (Hons) in Psychology, Economics, English Literature, Journalism & Mass Communication.
+7. School of Sciences: B.Sc (Hons) in Applied Mathematics, Physics, Chemistry, and Data Analytics.`
   },
   {
-    id: 'courses-postgrad',
-    category: 'Academic Programs',
-    title: 'Postgraduate, Top-Up & Foundation Programs',
-    content: `Postgraduate & Pathway Programs:
-- IFP (International Foundation Programme): 1-year pathway preparing international and local high school graduates for direct entry into UK undergraduate degrees.
-- Advanced Entry & Top-Up Degrees (Final Year Entry): For holders of diplomas, BTEC HNDs, or transfer credits seeking to complete their UK bachelor's degree in 1 to 2 years.
-- MSc / MBA Postgraduate Programs: Advanced applied computing, strategic corporate management, data intelligence, and executive leadership.`
+    id: 'admissions-process',
+    category: 'Admissions & Eligibility',
+    title: 'Woxsen Admission Process, Eligibility & Entrance Tests',
+    content: `Admissions at Woxsen University are evaluated holistically based on academic track record, entrance examination score, and personal interview:
+- Step 1: Submit the online application at woxsen.edu.in.
+- Step 2: Appear for entrance test or submit valid national scores:
+  • B.Tech: WAT (Woxsen Aptitude Test), JEE Main, VITEEE, or SAT score.
+  • MBA: WAT, CAT, XAT, NMAT, GMAT, GRE, or CMAT score.
+  • BBA: WAT or SAT.
+  • B.Des: WDT (Woxsen Design Test) + Design Portfolio review.
+  • Law: WAT, CLAT, or LSAT India.
+- Step 3: Psychometric Assessment & Personal Interview with the Faculty Admissions Panel.
+- Step 4: Offer letter issuance and seat confirmation via initial deposit.`
   },
   {
-    id: 'fees-structure',
+    id: 'fees-structure-woxsen',
     category: 'Tuition Fees & Payments',
-    title: 'International Tuition Fees, Admin Fees & Installment Schedules',
-    content: `Official Tuition Fee & Payment Plan Schedule:
-• IFP (Foundation): Total £4,000 (£3,600 tuition + £400 admin). Deposit: £2,200, followed by 2 installments of £900.
-• BA Business Management / BSc Psychology / BA Accounting & Finance: Total £5,800 (£5,400 tuition + £400 admin). Deposit: £2,800, followed by 2 installments of £1,500.
-• BSc Computer Science: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400, followed by 2 installments of £1,500.
-• LLB Law Programs: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400, followed by 2 installments of £1,500.
-• Advanced Entry & Top-Up: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400, followed by 2 installments of £1,500.
-• Postgraduate (MSc/MBA): Total £7,420 (£7,020 tuition + £400 admin). Deposit: £3,820, followed by 2 installments of £1,800.
-Payment Methods: Bank wire transfer, online portal payment, or campus finance desk credit/debit card.`
+    title: 'Woxsen University Program Fees & Installment Schedules',
+    content: `Official Woxsen University Fee Schedule (Annual / Program Basis):
+• B.Tech (Computer Science & Engineering): ₹3,60,000 / year tuition fee + ₹25,000 admission fee. Installments: 2 payments of ₹1,80,000 per semester.
+• MBA (2-Year Master of Business Administration): ₹7,50,000 / year (Total ₹15,00,000 for 2 years). Installments: 4 payments of ₹3,50,000 across semesters.
+• BBA (Hons) / Digital Marketing: ₹3,25,000 / year tuition fee. Installments: 2 payments of ₹1,62,500.
+• B.Des (Fashion, Industrial, Interior, Communication): ₹3,50,000 / year tuition fee. Installments: 2 payments of ₹1,75,000.
+• BA LLB / BBA LLB (5-Year Integrated): ₹2,75,000 / year tuition fee. Installments: 2 payments of ₹1,37,500.
+• B.Arch (5-Year Architecture): ₹2,85,000 / year tuition fee. Installments: 2 payments of ₹1,42,500.
+• Hostel & Dining: ₹1,50,000 to ₹1,80,000 / year depending on single or twin-sharing air-conditioned room preferences.`
   },
   {
-    id: 'scholarships-aid',
+    id: 'scholarships-woxsen',
     category: 'Tuition Fees & Payments',
-    title: 'Scholarships, Bursaries & Early Payment Discounts',
-    content: `Financial Aid & Scholarships at MDX Mauritius:
-1. Academic Merit Scholarship: Up to 20% tuition fee reduction for students demonstrating outstanding A-Level, IB, or French Baccalaureate grades.
-2. Early Bird Discount: £300 discount on full upfront payment before term start.
-3. Sibling Bursary: 10% fee reduction for siblings enrolled concurrently.
-4. Sports & Leadership Bursaries: Awarded to regional/national athletes and youth leaders.`
+    title: 'Woxsen Merit Scholarships & Financial Grants',
+    content: `Woxsen University awards competitive merit scholarships based on entrance test ranks and previous academic scores:
+1. Woxsen Merit Scholarship: Up to 50% tuition fee reduction awarded to top scorers in WAT/WDT/CAT/JEE/SAT/CLAT.
+2. Sports Scholarships: Up to 40% fee waiver for national and state-level athletes across cricket, football, tennis, and swimming.
+3. Girl Child Empowerment Scholarship: Dedicated financial aid to promote female participation in STEM, Technology, and Architecture.
+4. Early Decision Incentive: ₹25,000 - ₹50,000 waiver for applicants confirming admission in Round 1.`
   },
   {
-    id: 'navigation-locations',
-    category: 'Campus Navigation & Facilities',
-    title: 'Campus Coordinates, Buildings & Navigation GPS',
-    content: `Campus Buildings and GPS Coordinates:
-• Archway & Main Entrance: Lat -20.280309, Lng 57.395255. Primary access point, security gate, and visitor check-in.
-• Admin Building: Lat -20.280553, Lng 57.395167. Houses the Registrar, Admissions Office, Student Finance, and Dean's Office.
-• Campus Library & Study Pods: Lat -20.280528, Lng 57.394936. Open 8:00 AM to 7:00 PM on weekdays. Features silent reading pods, group study rooms, desktop terminals, and book borrowing.
-• Print Pod: Lat -20.280528, Lng 57.394936 (within Library Wing). High-speed multi-function photocopiers, scanning, and color printing.
-• IT Support Desk: Lat -20.280791, Lng 57.395543. Walk-in helpdesk for student portal access, campus WiFi (Eduroam), software licenses, and hardware diagnostics.
-• Robotics & AI Lab: Lat -20.280829, Lng 57.395387. Equipped with autonomous robotic kits, IoT sensor stations, Raspberry Pi / Arduino benches, and high-performance GPU workstations.
-• Cafeteria & Student Hub: Lat -20.280650, Lng 57.395420. Serving hot meals, snacks, coffee, and providing indoor recreation (table tennis, foosball, lounge).
-• Outdoor Amphitheatre: Central quad for student assemblies, cultural showcases, and guest keynote lectures.`
+    id: 'labs-innovation-woxsen',
+    category: 'Campus Facilities & Research',
+    title: 'Advanced Labs, Bloomberg Terminals & Trade Tower Incubator',
+    content: `World-Class Research & Innovation Centers at Woxsen University:
+• Vithal Gandhi Central Library: 70,000 sq.ft state-of-the-art facility holding over 30,000 printed volumes, IEEE Xplore, EBSCO, ScienceDirect, and quiet research pods.
+• Bloomberg Finance Lab: 20 dedicated Bloomberg professional terminals providing real-time global market data, equities, commodities, and risk analytics—one of the largest Bloomberg labs in educational India.
+• AI & Robotics Lab: High-performance GPU computing clusters, autonomous drone testbeds, mobile robots, LiDAR systems, and computer vision workstations.
+• Trade Tower (Startup Incubation Hub): Provides budding entrepreneurs with co-working spaces, legal counsel, angel investor access, and seed funding pools of up to ₹1 Crore.
+• Design Studios: 3D printing, laser cutters, CNC milling, VR/AR spatial headsets, and ceramics casting.`
   },
   {
-    id: 'appointments-scheduling',
-    category: 'Student Services',
-    title: 'Advisory, Faculty & Staff Appointment Booking',
-    content: `Students can schedule one-on-one appointments across key campus departments:
-1. Admissions & Visa Advisory: Student visas, CAS statements, enrollment confirmation, document attestation.
-2. Program Coordinators & Lecturers: Academic guidance, thesis supervision, coursework feedback, module selection.
-3. Student Finance: Tuition fee installment plans, receipts, and sponsorship letters.
-4. Career & Placement Services: Resume/CV review, internship applications, mock interviews, and industry networking.
-5. Wellness & Counseling: Confidential psychological counseling, stress management, and disability accommodations.`
+    id: 'sports-the-league',
+    category: 'Athletics & Recreation',
+    title: 'The League - International Standard Sports Arena',
+    content: `Woxsen's sports complex 'The League' is recognized as one of the finest collegiate sports facilities in South Asia:
+- Cricket: ICC-standard cricket ground with floodlights and professional pitch curator wickets.
+- Football: FIFA-certified synthetic turf football ground with professional drainage and spectator gallery.
+- Tennis: 8 ITF-standard synthetic tennis courts.
+- Aquatics: Olympic-length competition swimming pool and training lanes.
+- Indoor Sports: 4 wooden-floored badminton courts, squash courts, table tennis hall, and high-performance gymnasium.
+- Outdoor Sports: FIBA-standard basketball courts, volleyball, and skating rinks.`
   },
   {
-    id: 'student-clubs-events',
-    category: 'Campus Life & Events',
-    title: 'Clubs, Societies & Annual Campus Events',
-    content: `Student Life, Clubs & Major Campus Events:
-• Computing & Tech Club: Hosts annual 48-hour hackathons, competitive programming contests, and AI workshops.
-• Business & Entrepreneurship Society: Business pitch competitions, guest industry speakers, and startup incubation.
-• Law Society: Organizes mock trial court competitions (mooting) and visits to the Supreme Court of Mauritius.
-• Sports Club: Football, badminton, basketball tournaments, and cross-country runs.
-• Major Annual Events:
-  - Orientation Week: Welcome fairs, campus tours, icebreakers, and club sign-ups.
-  - TechFest & Innovation Expo: Student showcase of software and robotics projects.
-  - Cultural Day: Celebrating international diversity with traditional cuisine, music, and attire.
-  - Career Fair: Connecting students with top multinational employers across Mauritius and the Indian Ocean.`
+    id: 'hostels-student-life',
+    category: 'Campus Life & Housing',
+    title: 'Residential Hostels, Multi-Cuisine Dining & Campus Transport',
+    content: `Campus Life at Woxsen University:
+• Hostels: 100% residential campus. Fully furnished, air-conditioned student residences with en-suite washrooms, 24/7 security, biometric access, laundromat, and high-speed Wi-Fi.
+• Food Court: Central dining facility providing nutritious breakfast, lunch, snacks, and dinner. Multi-cuisine menus include North Indian, South Indian, Continental, vegetarian, non-veg, and live egg/juice counters.
+• Campus Shuttles: Dedicated air-conditioned transport connecting the Kamkole campus with Hyderabad city hubs: Miyapur Metro, Lingampally Railway Station, Gachibowli, and Rajiv Gandhi International Airport (RGIA).
+• Healthcare: 24/7 campus health center staffed with medical doctors, resident nurses, and emergency ambulance on standby.`
   },
   {
-    id: 'admissions-timeline',
+    id: 'placements-careers',
+    category: 'Careers & Placements',
+    title: 'Woxsen Placement Track Record & Top Corporate Recruiters',
+    content: `Placements & Industry Relations:
+- 100% placement track record across MBA, B.Tech, and B.Des graduating batches.
+- Top Corporate Recruiters: Amazon, Dell Technologies, Deloitte, KPMG, Morgan Stanley, Ernst & Young (EY), Aditya Birla Group, HDFC Bank, Tech Mahindra, Arcesium, and Cognizant.
+- Compensation Highlights:
+  • Highest Package: ₹17.0+ LPA
+  • MBA Average Package: ₹9.04 LPA
+  • B.Tech CSE Average Package: ₹8.60 LPA
+- Mandatory 2-3 month summer corporate internships with leading Fortune 500 enterprises.`
+  },
+  {
+    id: 'academic-calendar-woxsen',
     category: 'Academic Calendar',
-    title: 'Intakes, Term Dates & Academic Calendar',
-    content: `Academic Calendar & Intakes:
-• October Intake (Autumn Semester): Primary intake for all undergraduate, postgraduate, and foundation degrees. Classes commence early October.
-• February Intake (Spring Semester): Mid-year entry for select degrees, top-up programs, and postgraduates.
-• Exam Periods: January (Semester 1 exams) and May/June (Semester 2 exams).
-• Holidays: Christmas/New Year recess, Independence Day (March 12), and summer vacation (July - September).`
-  },
-  {
-    id: 'accommodation-transport',
-    category: 'Campus Services',
-    title: 'Student Accommodation & Campus Shuttle Services',
-    content: `Housing & Daily Commute:
-• Student Housing: Approved student residences in Flic-en-Flac and Cascavelle with 24/7 security, WiFi, shared kitchens, and laundry facilities.
-• Campus Shuttle Bus: Complimentary university shuttle buses operate between Flic-en-Flac beach residences, Quatre Bornes, Rose Hill, and the campus.
-• Public Transit: Easy access via public buses along the Cascavelle / Black River Coastal road.`
-  },
-  {
-    id: 'study-tips-support',
-    category: 'Academic Skills',
-    title: 'Study Planning, Academic Writing & Exam Preparation',
-    content: `Academic Success Guidelines:
-• Study Planning: Recommended 25-50 minute Pomodoro intervals with 5-10 minute rest periods. Allocate 15-20 hours weekly for independent study outside lectures.
-• Harvard Referencing: Mandatory referencing format for all coursework essays and dissertations.
-• Academic Writing Support: Weekly drop-in clinics at the Library for essay structuring, literature reviews, and critical analysis.
-• Extension Requests: Extenuating circumstances (deferrals) must be lodged with medical evidence within 7 days via the student portal.`
+    title: 'Academic Calendar, Examination Timelines & Holidays',
+    content: `Woxsen Academic Year Schedule:
+• Fall Semester (Odd Semester):
+  - Student Orientation & Onboarding: Early August
+  - Mid-Term Examinations: October
+  - Diwali / Dussehra Break: October/November
+  - End-Term Final Examinations: December
+• Spring Semester (Even Semester):
+  - Classes Commence: Second week of January
+  - 'Infinity' Annual Cultural Fest: February
+  - Mid-Term Examinations: March
+  - End-Term Final Examinations: May
+  - Summer Corporate Internships: June - July`
   }
 ];
 
-// Ingest dynamic JSON items into corpus
-campusLocations.forEach((loc, index) => {
-  campusKnowledgeCorpus.push({
-    id: `location-${index}`,
-    category: 'Campus Navigation',
-    title: `Location: ${loc.LocationName}`,
-    content: `Campus Landmark: "${loc.LocationName}". Located at Latitude: ${loc.Coordinates.lat}, Longitude: ${loc.Coordinates.lng}. Accessible directly from the central campus walkway.`
-  });
-});
-
-internationalFees.forEach((fee, index) => {
-  campusKnowledgeCorpus.push({
-    id: `fee-detail-${index}`,
-    category: 'Tuition Fees',
-    title: `Tuition Fees for ${fee.Program}`,
-    content: `Program: ${fee.Program}. Tuition Fee: ${fee.TuitionFees}. Administrative Fee: ${fee.AdminFees}. Total Full Payment: ${fee.FullPayment}. Installment Plan: Non-refundable deposit ${fee.InstallmentNonRefundableDeposit}, followed by 2 equal installments of ${Array.isArray(fee.Installment) ? fee.Installment.join(' and ') : fee.Installment}.`
-  });
-});
-
-// TF-IDF Semantic Vector Retrieval for RAG Pipeline
+// TF-IDF Tokenizer & Vector Similarity Engine
 function tokenize(text) {
   if (!text) return [];
   return text
     .toLowerCase()
-    .replace(/[^\w\s£$-]/g, ' ')
+    .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
-    .filter(word => word.length > 1 && !STOP_WORDS.has(word));
+    .filter(w => w.length > 2);
 }
 
-const STOP_WORDS = new Set([
-  'the', 'is', 'at', 'which', 'on', 'a', 'an', 'and', 'or', 'to', 'in', 'of', 'for', 'with',
-  'as', 'by', 'that', 'this', 'it', 'from', 'be', 'are', 'was', 'were', 'has', 'have', 'had',
-  'can', 'could', 'should', 'would', 'i', 'you', 'he', 'she', 'they', 'we', 'me', 'my', 'what',
-  'how', 'when', 'who', 'where', 'why', 'tell', 'show', 'give', 'about', 'some', 'any'
-]);
-
-function computeIDF(corpus) {
-  const docCount = corpus.length;
-  const df = {};
-  corpus.forEach(doc => {
-    const tokens = new Set(tokenize(`${doc.title} ${doc.content}`));
-    tokens.forEach(token => {
-      df[token] = (df[token] || 0) + 1;
-    });
-  });
-
-  const idf = {};
-  Object.keys(df).forEach(token => {
-    idf[token] = Math.log((docCount + 1) / (df[token] + 1)) + 1;
-  });
-  return idf;
-}
-
-const corpusIDF = computeIDF(campusKnowledgeCorpus);
-
-function vectorize(tokens, idf) {
+function computeTF(tokens) {
   const tf = {};
-  tokens.forEach(t => { tf[t] = (tf[t] || 0) + 1; });
-  const vector = {};
-  let norm = 0;
-  Object.keys(tf).forEach(t => {
-    const weight = (tf[t] / tokens.length) * (idf[t] || 1);
-    vector[t] = weight;
-    norm += weight * weight;
+  tokens.forEach(t => {
+    tf[t] = (tf[t] || 0) + 1;
   });
-  return { vector, norm: Math.sqrt(norm) || 1 };
+  const total = tokens.length || 1;
+  Object.keys(tf).forEach(k => {
+    tf[k] = tf[k] / total;
+  });
+  return tf;
 }
 
-// Pre-vectorize all corpus documents
-const docVectors = campusKnowledgeCorpus.map(doc => {
-  const tokens = tokenize(`${doc.title} ${doc.content}`);
-  return {
-    ...doc,
-    ...vectorize(tokens, corpusIDF)
-  };
+// Precompute IDF for the corpus
+const docTokensList = campusKnowledgeCorpus.map(doc => tokenize(doc.title + ' ' + doc.content));
+const totalDocs = campusKnowledgeCorpus.length;
+const idfDict = {};
+
+docTokensList.forEach(tokens => {
+  const unique = new Set(tokens);
+  unique.forEach(term => {
+    idfDict[term] = (idfDict[term] || 0) + 1;
+  });
 });
 
-function retrieveRelevantContexts(query, topK = 4) {
-  if (!query || typeof query !== 'string') {
-    return campusKnowledgeCorpus.slice(0, topK);
+Object.keys(idfDict).forEach(term => {
+  idfDict[term] = Math.log((totalDocs + 1) / (idfDict[term] + 1)) + 1;
+});
+
+function computeVector(tokens) {
+  const tf = computeTF(tokens);
+  const vec = {};
+  Object.keys(tf).forEach(term => {
+    const idf = idfDict[term] || Math.log(totalDocs + 1) + 1;
+    vec[term] = tf[term] * idf;
+  });
+  return vec;
+}
+
+function cosineSimilarity(vecA, vecB) {
+  let dot = 0;
+  let normA = 0;
+  let normB = 0;
+
+  for (const k in vecA) {
+    if (vecB[k]) dot += vecA[k] * vecB[k];
+    normA += vecA[k] * vecA[k];
+  }
+  for (const k in vecB) {
+    normB += vecB[k] * vecB[k];
   }
 
+  normA = Math.sqrt(normA);
+  normB = Math.sqrt(normB);
+
+  if (normA === 0 || normB === 0) return 0;
+  return dot / (normA * normB);
+}
+
+const corpusVectors = docTokensList.map(tokens => computeVector(tokens));
+
+/**
+ * Retrieve top-k relevant knowledge chunks using vector cosine similarity
+ */
+function retrieveRelevantContexts(query, topK = 3) {
   const queryTokens = tokenize(query);
   if (queryTokens.length === 0) {
-    return campusKnowledgeCorpus.slice(0, topK).map(doc => ({ ...doc, score: 0.1 }));
+    return campusKnowledgeCorpus.slice(0, topK).map(d => ({ ...d, score: 0 }));
   }
 
-  const { vector: queryVec, norm: queryNorm } = vectorize(queryTokens, corpusIDF);
+  const queryVec = computeVector(queryTokens);
 
-  const scoredDocs = docVectors.map(doc => {
-    let dotProduct = 0;
-    queryTokens.forEach(token => {
-      if (doc.vector[token]) {
-        dotProduct += (queryVec[token] || 0) * doc.vector[token];
-      }
+  const scored = campusKnowledgeCorpus.map((doc, idx) => {
+    const sim = cosineSimilarity(queryVec, corpusVectors[idx]);
+    let titleBoost = 0;
+    const docTitleLower = doc.title.toLowerCase();
+    queryTokens.forEach(t => {
+      if (docTitleLower.includes(t)) titleBoost += 0.15;
     });
-
-    let boost = 0;
-    const lowerQuery = query.toLowerCase();
-    if (doc.title.toLowerCase().includes(lowerQuery) || lowerQuery.includes(doc.title.toLowerCase())) {
-      boost += 0.6;
-    }
-    if (doc.category.toLowerCase().includes(lowerQuery)) {
-      boost += 0.35;
-    }
-
-    const similarity = (dotProduct / (queryNorm * doc.norm)) + boost;
     return {
-      id: doc.id,
-      category: doc.category,
-      title: doc.title,
-      content: doc.content,
-      score: similarity
+      ...doc,
+      score: sim + titleBoost
     };
   });
 
-  scoredDocs.sort((a, b) => b.score - a.score);
-  return scoredDocs.slice(0, topK);
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, topK);
 }
 
 module.exports = {
   campusKnowledgeCorpus,
-  internationalFees,
   campusLocations,
+  internationalFees,
   retrieveRelevantContexts
 };

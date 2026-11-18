@@ -25,7 +25,12 @@ import {
   Layers,
   ChevronDown,
   ChevronUp,
-  Square
+  Square,
+  Cloud,
+  Globe,
+  Search,
+  Wind,
+  Droplets
 } from 'lucide-react';
 
 export default function ChatArea({
@@ -278,12 +283,12 @@ export default function ChatArea({
   };
 
   const quickPills = [
-    { label: '🎓 Available Degrees', query: 'What undergraduate and postgraduate degrees are offered at Middlesex University Mauritius?' },
-    { label: '💰 Tuition Fee Schedules', query: 'What are the tuition fees, deposit, and installment plans for BSc Computer Science?' },
-    { label: '📍 Find Library & GPS', query: 'Where is the Campus Library located and how do I get there?' },
-    { label: '📅 Book Advising Session', query: 'I would like to book an appointment with academic advisory.' },
-    { label: '✉️ Draft Email to Professor', query: 'Can you draft a professional email to my professor requesting an assignment extension?' },
-    { label: '📚 Create Study Timetable', query: 'Generate an exam study plan for my semester modules.' }
+    { label: '☁️ Live Weather (Hyderabad)', query: 'What is the current weather and 3-day forecast for Hyderabad?' },
+    { label: '🎓 Woxsen B.Tech CSE Fees', query: 'What are the tuition fees, deposit, and merit scholarships for B.Tech in CSE at Woxsen University?' },
+    { label: '🌐 Live Web Search', query: 'Search web for latest breakthroughs in artificial intelligence and robotics' },
+    { label: '📍 Bloomberg Lab & Campus Map', query: 'Where is the Bloomberg Finance Lab located on Woxsen campus?' },
+    { label: '💻 Python Coding Assistant', query: 'Can you write a clean Python script for Fibonacci sequence with memoization?' },
+    { label: '📅 Book Admissions Counselling', query: 'I would like to book an appointment with Woxsen admissions counselling.' }
   ];
 
   return (
@@ -308,6 +313,80 @@ export default function ChatArea({
         width: '100%',
         margin: '0 auto'
       }}>
+        {messages.length === 0 && (
+          <div style={{
+            margin: 'auto 0',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '16px',
+            padding: '40px 20px'
+          }}>
+            <div style={{
+              width: '64px',
+              height: '64px',
+              borderRadius: '18px',
+              background: 'var(--accent-gradient)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 8px 30px rgba(99, 102, 241, 0.35)',
+              color: 'white'
+            }}>
+              <Bot size={34} />
+            </div>
+
+            <h2 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text-primary)', margin: 0 }}>
+              AI Assistant | Woxsen University & Beyond
+            </h2>
+
+            <p style={{ maxWidth: '540px', fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+              Your intelligent, general-purpose AI assistant. Ask any question—from live weather, programming, and mathematics, to specialized Woxsen University admissions, fee schedules, and campus navigation.
+            </p>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '12px',
+              width: '100%',
+              maxWidth: '680px',
+              marginTop: '12px'
+            }}>
+              {quickPills.slice(0, 4).map((p, i) => (
+                <button
+                  key={i}
+                  onClick={() => onSendMessage(p.query)}
+                  style={{
+                    padding: '12px 14px',
+                    borderRadius: '12px',
+                    border: '1px solid var(--border-subtle)',
+                    background: 'var(--bg-card)',
+                    color: 'var(--text-primary)',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '4px',
+                    transition: 'all 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent)';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                    e.currentTarget.style.transform = 'none';
+                  }}
+                >
+                  <span style={{ fontSize: '13px', fontWeight: '700' }}>{p.label}</span>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{p.query.slice(0, 60)}...</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {messages.map((msg, index) => {
           const isUser = msg.sender === 'user';
           const msgId = msg.id || `msg-${index}`;
@@ -635,6 +714,148 @@ export default function ChatArea({
                       >
                         <Sparkles size={14} /> Launch 360° Interactive Campus Tour
                       </button>
+                    </div>
+                  )}
+
+                  {/* Real-Time Live Weather Card */}
+                  {msg.richCard?.type === 'weather' && msg.richCard.weather && (
+                    <div style={{
+                      marginTop: '14px',
+                      padding: '16px',
+                      background: 'var(--bg-card)',
+                      borderRadius: '12px',
+                      border: '1px solid var(--border-subtle)',
+                      boxShadow: 'var(--shadow-subtle)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '12px'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '10px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <Cloud size={18} color="var(--accent)" />
+                          <span style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-primary)' }}>
+                            {msg.richCard.weather.location}
+                          </span>
+                        </div>
+                        <span style={{ fontSize: '10.5px', background: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6', padding: '3px 8px', borderRadius: '4px', fontWeight: '700' }}>
+                          LIVE SATELLITE METEO
+                        </span>
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                        <div style={{ fontSize: '38px', lineHeight: 1 }}>
+                          {msg.richCard.weather.icon || '☀️'}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '28px', fontWeight: '800', color: 'var(--text-primary)', lineHeight: 1 }}>
+                            {msg.richCard.weather.temperature}°C
+                          </div>
+                          <div style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px' }}>
+                            {msg.richCard.weather.condition} • Feels like {msg.richCard.weather.feelsLike}°C
+                          </div>
+                        </div>
+                        <div style={{ marginLeft: 'auto', display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'right', fontSize: '11.5px', color: 'var(--text-muted)' }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', justifyContent: 'flex-end' }}>
+                            <Droplets size={12} color="#38bdf8" /> Humidity: {msg.richCard.weather.humidity}%
+                          </span>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', justifyContent: 'flex-end' }}>
+                            <Wind size={12} color="#94a3b8" /> Wind: {msg.richCard.weather.windSpeed} km/h
+                          </span>
+                        </div>
+                      </div>
+
+                      {msg.richCard.weather.forecast && msg.richCard.weather.forecast.length > 0 && (
+                        <div style={{
+                          display: 'grid',
+                          gridTemplateColumns: `repeat(${msg.richCard.weather.forecast.length}, 1fr)`,
+                          gap: '8px',
+                          borderTop: '1px solid var(--border-subtle)',
+                          paddingTop: '10px'
+                        }}>
+                          {msg.richCard.weather.forecast.map((f, fIdx) => (
+                            <div key={fIdx} style={{
+                              padding: '8px',
+                              borderRadius: '8px',
+                              background: 'var(--bg-input)',
+                              textAlign: 'center',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '2px'
+                            }}>
+                              <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{f.date}</span>
+                              <span style={{ fontSize: '18px' }}>{f.icon}</span>
+                              <span style={{ fontSize: '11.5px', fontWeight: '700', color: 'var(--text-primary)' }}>
+                                {f.maxTemp}° / {f.minTemp}°
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Real-Time Web Search Card */}
+                  {msg.richCard?.type === 'web_search' && msg.richCard.search && (
+                    <div style={{
+                      marginTop: '14px',
+                      padding: '14px',
+                      background: 'var(--bg-card)',
+                      borderRadius: '12px',
+                      border: '1px solid var(--border-subtle)',
+                      boxShadow: 'var(--shadow-subtle)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '10px'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <Globe size={16} color="var(--accent)" />
+                          <span style={{ fontSize: '12.5px', fontWeight: '700', color: 'var(--text-primary)' }}>
+                            Verified Web Citations: "{msg.richCard.search.query}"
+                          </span>
+                        </div>
+                        <span style={{ fontSize: '10px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '2px 6px', borderRadius: '4px', fontWeight: '700' }}>
+                          LIVE INDEX
+                        </span>
+                      </div>
+
+                      {msg.richCard.search.results && (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                          {msg.richCard.search.results.map((res, rIdx) => (
+                            <a
+                              key={rIdx}
+                              href={res.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{
+                                padding: '8px 12px',
+                                borderRadius: '8px',
+                                background: 'var(--bg-input)',
+                                border: '1px solid var(--border-subtle)',
+                                textDecoration: 'none',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '3px',
+                                transition: 'border-color 0.15s ease'
+                              }}
+                              onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                              onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-subtle)'}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <span style={{ fontSize: '12px', fontWeight: '700', color: 'var(--accent)' }}>
+                                  {res.title}
+                                </span>
+                                <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>
+                                  {res.source} ↗
+                                </span>
+                              </div>
+                              <p style={{ fontSize: '11px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.4 }}>
+                                {res.snippet.slice(0, 160)}...
+                              </p>
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
