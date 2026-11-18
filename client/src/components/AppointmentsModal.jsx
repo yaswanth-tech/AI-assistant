@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, User, Mail, Building2, CheckCircle2, X, Plus } from 'lucide-react';
+import { Calendar, Clock, CheckCircle2, X, Plus, ExternalLink, Download } from 'lucide-react';
 
 export default function AppointmentsModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -7,7 +7,7 @@ export default function AppointmentsModal({ isOpen, onClose }) {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [successMsg, setSuccessMsg] = useState('');
+  const [latestConfirmed, setLatestConfirmed] = useState(null);
 
   const [formData, setFormData] = useState({
     studentName: '',
@@ -50,7 +50,7 @@ export default function AppointmentsModal({ isOpen, onClose }) {
       });
       const data = await res.json();
       if (data.success) {
-        setSuccessMsg('Appointment confirmed successfully! Notification broadcasted to real-time pipeline.');
+        setLatestConfirmed(data.appointment);
         setFormData({
           studentName: '',
           email: '',
@@ -60,7 +60,6 @@ export default function AppointmentsModal({ isOpen, onClose }) {
           notes: ''
         });
         fetchAppointments();
-        setTimeout(() => setSuccessMsg(''), 4000);
       }
     } catch (err) {
       alert('Error booking appointment: ' + err.message);
@@ -78,17 +77,18 @@ export default function AppointmentsModal({ isOpen, onClose }) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 100,
+      zIndex: 110,
       padding: '20px'
     }}>
       <div style={{
         width: '100%',
-        maxWidth: '850px',
-        maxHeight: '85vh',
-        background: '#0f172a',
+        maxWidth: '860px',
+        maxHeight: '90vh',
+        background: 'var(--bg-card)',
+        color: 'var(--text-primary)',
         borderRadius: '16px',
-        border: '1px solid rgba(255, 255, 255, 0.12)',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+        border: '1px solid var(--border-subtle)',
+        boxShadow: 'var(--shadow-subtle)',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden'
@@ -96,92 +96,128 @@ export default function AppointmentsModal({ isOpen, onClose }) {
         {/* Header */}
         <div style={{
           padding: '16px 20px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          borderBottom: '1px solid var(--border-subtle)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'rgba(15, 23, 42, 0.9)'
+          background: 'var(--bg-header)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{
               width: '32px',
               height: '32px',
               borderRadius: '8px',
-              background: 'rgba(16, 185, 129, 0.2)',
+              background: 'rgba(16, 185, 129, 0.15)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              color: '#10b981'
             }}>
-              <Calendar size={18} color="#10b981" />
+              <Calendar size={18} />
             </div>
             <div>
-              <h2 style={{ fontSize: '15px', fontWeight: '700', color: '#f8fafc' }}>
+              <h2 style={{ fontSize: '15px', fontWeight: '700' }}>
                 Academic Advisory & Staff Appointment Scheduling
               </h2>
-              <p style={{ fontSize: '11px', color: '#94a3b8' }}>
-                Directly synced with MongoDB and WebSocket Pipeline
+              <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+                Integrated with Google Calendar & Real-Time Sync
               </p>
             </div>
           </div>
 
-          <button
-            onClick={onClose}
-            style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '6px',
-              color: '#94a3b8',
-              cursor: 'pointer'
-            }}
-          >
+          <button onClick={onClose} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
             <X size={18} />
           </button>
         </div>
 
-        {/* Success Alert */}
-        {successMsg && (
+        {/* Latest Confirmed Notification Pill */}
+        {latestConfirmed && (
           <div style={{
-            background: 'rgba(16, 185, 129, 0.15)',
+            background: 'rgba(16, 185, 129, 0.12)',
             borderBottom: '1px solid rgba(16, 185, 129, 0.3)',
-            padding: '10px 20px',
-            color: '#34d399',
-            fontSize: '12px',
-            fontWeight: '600',
+            padding: '12px 20px',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px'
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '10px'
           }}>
-            <CheckCircle2 size={16} /> {successMsg}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#10b981', fontSize: '12.5px', fontWeight: '600' }}>
+              <CheckCircle2 size={16} />
+              Confirmed: Meeting with {latestConfirmed.department} on {new Date(latestConfirmed.dateTime).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}
+            </div>
+
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {latestConfirmed.googleCalendarUrl && (
+                <a
+                  href={latestConfirmed.googleCalendarUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    padding: '6px 12px',
+                    borderRadius: '6px',
+                    background: '#10b981',
+                    color: 'white',
+                    fontSize: '11.5px',
+                    fontWeight: '600',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px'
+                  }}
+                >
+                  <ExternalLink size={12} /> Add to Google Calendar
+                </a>
+              )}
+              <a
+                href={`/api/appointments/${latestConfirmed._id || latestConfirmed.id}/ics`}
+                download="appointment.ics"
+                style={{
+                  padding: '6px 12px',
+                  borderRadius: '6px',
+                  background: 'var(--bg-input)',
+                  border: '1px solid var(--border-subtle)',
+                  color: 'var(--text-primary)',
+                  fontSize: '11.5px',
+                  fontWeight: '600',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <Download size={12} /> Download .ics
+              </a>
+            </div>
           </div>
         )}
 
-        {/* Content Split */}
+        {/* Content Split: Booking Form & Active Schedules */}
         <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
           {/* Booking Form */}
-          <div style={{ flex: 1, padding: '20px', overflowY: 'auto', borderRight: '1px solid rgba(255, 255, 255, 0.08)' }}>
-            <h3 style={{ fontSize: '13px', fontWeight: '700', color: '#e2e8f0', marginBottom: '14px' }}>
-              Schedule New Advisory Session
+          <div style={{ flex: 1, padding: '20px', overflowY: 'auto', borderRight: '1px solid var(--border-subtle)' }}>
+            <h3 style={{ fontSize: '13px', fontWeight: '700', marginBottom: '14px', color: 'var(--text-primary)' }}>
+              Book New Advising Session
             </h3>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div>
-                <label style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
-                  Student Name
+                <label style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
+                  Student Full Name
                 </label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Alex Morgan"
                   value={formData.studentName}
-                  onChange={e => setFormData({ ...formData, studentName: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
                   style={{
                     width: '100%',
                     padding: '8px 12px',
                     borderRadius: '8px',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    background: 'rgba(30, 41, 59, 0.6)',
-                    color: '#f8fafc',
+                    border: '1px solid var(--border-subtle)',
+                    background: 'var(--bg-input)',
+                    color: 'var(--text-primary)',
                     fontSize: '13px',
                     outline: 'none'
                   }}
@@ -189,7 +225,7 @@ export default function AppointmentsModal({ isOpen, onClose }) {
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
+                <label style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
                   Student Email
                 </label>
                 <input
@@ -197,65 +233,65 @@ export default function AppointmentsModal({ isOpen, onClose }) {
                   required
                   placeholder="e.g. alex@live.mdx.ac.mu"
                   value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   style={{
                     width: '100%',
                     padding: '8px 12px',
                     borderRadius: '8px',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    background: 'rgba(30, 41, 59, 0.6)',
-                    color: '#f8fafc',
+                    border: '1px solid var(--border-subtle)',
+                    background: 'var(--bg-input)',
+                    color: 'var(--text-primary)',
                     fontSize: '13px',
                     outline: 'none'
                   }}
                 />
               </div>
 
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <div style={{ flex: 1 }}>
-                  <label style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div>
+                  <label style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
                     Department
                   </label>
                   <select
                     value={formData.department}
-                    onChange={e => setFormData({ ...formData, department: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '8px 12px',
+                      padding: '8px 10px',
                       borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      background: 'rgba(30, 41, 59, 0.6)',
-                      color: '#f8fafc',
-                      fontSize: '13px',
+                      border: '1px solid var(--border-subtle)',
+                      background: 'var(--bg-input)',
+                      color: 'var(--text-primary)',
+                      fontSize: '12.5px',
                       outline: 'none'
                     }}
                   >
-                    <option value="Admissions Office" style={{ background: '#0f172a' }}>Admissions Office</option>
-                    <option value="Computer Science Faculty" style={{ background: '#0f172a' }}>Computer Science Faculty</option>
-                    <option value="Business & Law Faculty" style={{ background: '#0f172a' }}>Business & Law Faculty</option>
-                    <option value="Student Finance & Visa" style={{ background: '#0f172a' }}>Student Finance & Visa</option>
-                    <option value="IT Support Desk" style={{ background: '#0f172a' }}>IT Support Desk</option>
-                    <option value="Career & Wellness Counselling" style={{ background: '#0f172a' }}>Career & Wellness Counselling</option>
+                    <option value="Admissions Office">Admissions Office</option>
+                    <option value="Computer Science Faculty">Computer Science Faculty</option>
+                    <option value="Business & Law Faculty">Business & Law Faculty</option>
+                    <option value="Student Finance & Visa">Student Finance & Visa</option>
+                    <option value="IT Support Desk">IT Support Desk</option>
+                    <option value="Career & Wellness Counselling">Career & Wellness Counselling</option>
                   </select>
                 </div>
 
-                <div style={{ flex: 1 }}>
-                  <label style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
+                <div>
+                  <label style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
                     Date & Time
                   </label>
                   <input
                     type="datetime-local"
                     required
                     value={formData.dateTime}
-                    onChange={e => setFormData({ ...formData, dateTime: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, dateTime: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '8px 12px',
+                      padding: '8px 10px',
                       borderRadius: '8px',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      background: 'rgba(30, 41, 59, 0.6)',
-                      color: '#f8fafc',
-                      fontSize: '13px',
+                      border: '1px solid var(--border-subtle)',
+                      background: 'var(--bg-input)',
+                      color: 'var(--text-primary)',
+                      fontSize: '12.5px',
                       outline: 'none'
                     }}
                   />
@@ -263,21 +299,21 @@ export default function AppointmentsModal({ isOpen, onClose }) {
               </div>
 
               <div>
-                <label style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
-                  Purpose / Topic
+                <label style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
+                  Discussion Purpose / Module
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Course entry prerequisites, fee plan questions"
+                  placeholder="e.g. Course entry requirements, dissertation progress"
                   value={formData.purpose}
-                  onChange={e => setFormData({ ...formData, purpose: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                   style={{
                     width: '100%',
                     padding: '8px 12px',
                     borderRadius: '8px',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    background: 'rgba(30, 41, 59, 0.6)',
-                    color: '#f8fafc',
+                    border: '1px solid var(--border-subtle)',
+                    background: 'var(--bg-input)',
+                    color: 'var(--text-primary)',
                     fontSize: '13px',
                     outline: 'none'
                   }}
@@ -292,7 +328,7 @@ export default function AppointmentsModal({ isOpen, onClose }) {
                   padding: '10px 16px',
                   borderRadius: '8px',
                   border: 'none',
-                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  background: 'var(--accent-gradient)',
                   color: 'white',
                   fontWeight: '600',
                   fontSize: '13px',
@@ -303,54 +339,75 @@ export default function AppointmentsModal({ isOpen, onClose }) {
                   gap: '8px'
                 }}
               >
-                <Plus size={16} /> {submitting ? 'Confirming...' : 'Book Advisory Session'}
+                <Plus size={16} /> {submitting ? 'Confirming...' : 'Confirm Advisory Session'}
               </button>
             </form>
           </div>
 
           {/* Booked Appointments List */}
-          <div style={{ width: '320px', background: 'rgba(15, 23, 42, 0.5)', padding: '20px', overflowY: 'auto' }}>
-            <h3 style={{ fontSize: '13px', fontWeight: '700', color: '#e2e8f0', marginBottom: '14px' }}>
-              Active Schedules ({appointments.length})
+          <div style={{ width: '320px', background: 'var(--bg-sidebar)', padding: '20px', overflowY: 'auto' }}>
+            <h3 style={{ fontSize: '13px', fontWeight: '700', marginBottom: '14px', color: 'var(--text-primary)' }}>
+              Scheduled Sessions ({appointments.length})
             </h3>
 
             {loading ? (
-              <div style={{ fontSize: '12px', color: '#64748b' }}>Loading schedules...</div>
+              <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Loading sessions...</div>
             ) : appointments.length === 0 ? (
-              <div style={{ fontSize: '12px', color: '#64748b' }}>No appointments booked yet.</div>
+              <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>No appointments scheduled yet.</div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {appointments.map((apt, index) => (
                   <div
                     key={apt._id || index}
                     style={{
-                      background: 'rgba(30, 41, 59, 0.6)',
+                      background: 'var(--bg-card)',
                       borderRadius: '8px',
                       padding: '12px',
-                      border: '1px solid rgba(255, 255, 255, 0.06)'
+                      border: '1px solid var(--border-subtle)'
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '13px', fontWeight: '700', color: '#f1f5f9' }}>
+                      <span style={{ fontSize: '13px', fontWeight: '700', color: 'var(--text-primary)' }}>
                         {apt.studentName}
                       </span>
-                      <span style={{ fontSize: '10px', background: 'rgba(16, 185, 129, 0.2)', color: '#34d399', padding: '2px 6px', borderRadius: '4px', fontWeight: '600' }}>
+                      <span style={{ fontSize: '10px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', padding: '2px 6px', borderRadius: '4px', fontWeight: '700' }}>
                         {apt.status || 'Confirmed'}
                       </span>
                     </div>
 
-                    <div style={{ fontSize: '11px', color: '#818cf8', fontWeight: '600', marginTop: '4px' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--accent)', fontWeight: '600', marginTop: '4px' }}>
                       {apt.department}
                     </div>
 
-                    <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '3px' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '2px' }}>
                       {apt.purpose}
                     </div>
 
-                    <div style={{ fontSize: '10px', color: '#64748b', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Clock size={12} />
+                    <div style={{ fontSize: '10px', color: 'var(--text-muted)', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <Clock size={11} />
                       {new Date(apt.dateTime).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                     </div>
+
+                    {apt.googleCalendarUrl && (
+                      <div style={{ marginTop: '8px', paddingTop: '6px', borderTop: '1px solid var(--border-subtle)', display: 'flex', gap: '6px' }}>
+                        <a
+                          href={apt.googleCalendarUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            fontSize: '10.5px',
+                            color: '#10b981',
+                            fontWeight: '600',
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '3px'
+                          }}
+                        >
+                          <Calendar size={11} /> Google Calendar
+                        </a>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

@@ -28,79 +28,131 @@ const campusKnowledgeCorpus = [
   {
     id: 'overview-1',
     category: 'About Campus',
-    title: 'Middlesex University Mauritius Overview',
-    content: `Middlesex University Mauritius is an international branch campus located at Coastal Road, Flic-en-Flac / Cascavelle, Mauritius. It provides British degree standards accredited by the Quality Assurance Agency (QAA) in the UK. The campus features state-of-the-art computer labs, an innovation robotics lab, modern library, student hub, and collaborative workspaces.`
+    title: 'Middlesex University Mauritius Overview & Accreditations',
+    content: `Middlesex University Mauritius is an international branch campus of Middlesex University London, located at Coastal Road, Cascavelle / Flic-en-Flac, Mauritius. 
+Degrees awarded are identical British qualifications accredited by the Quality Assurance Agency (QAA) in the United Kingdom. 
+The campus boasts cutting-edge computer suites, an Innovation & Robotics Lab, modern library, collaborative student commons, high-speed campus-wide Eduroam WiFi, and scenic student recreation spaces.`
   },
   {
     id: 'virtual-tour-1',
     category: 'Virtual Tour',
     title: '360° Interactive Campus Virtual Tour',
-    content: `Students and prospective visitors can explore the campus virtually anytime. The official 360-degree interactive virtual tour is hosted at https://app.lapentor.com/sphere/mdx-mru-virtual-tour with panoramic views of the amphitheatre, robotics lab, cafeteria, archway, and library.`
+    content: `Experience our Cascavelle campus virtually anytime! The official 360-degree interactive tour is accessible at:
+https://app.lapentor.com/sphere/mdx-mru-virtual-tour
+Explore panoramic views of the amphitheatre, modern lecture halls, robotics lab, cafeteria, student lounge, and the main archway entrance.`
   },
   {
     id: 'courses-undergrad',
     category: 'Academic Programs',
-    title: 'Undergraduate Programs Offered',
-    content: `Available Undergraduate Programs:
-1. BSc (Hons) Computer Science: Focuses on software engineering, artificial intelligence, algorithms, distributed systems, and cloud computing.
-2. BA (Hons) Business Management: Covers entrepreneurship, international marketing, corporate finance, and operations management.
-3. BSc (Hons) Psychology with Counselling Skills: Psychological research, cognitive science, developmental psychology, and mental health counselling.
-4. BA (Hons) Accounting and Finance: Financial accounting, auditing, taxation, and investment banking accredited by ACCA/CIMA.
-5. BA (Hons) Advertising, PR and Branding: Digital brand strategy, public relations, consumer behavior, and media production.
-6. LLB (Hons) Law: English law, international law, commercial arbitration, and human rights.`
+    title: 'Undergraduate Degree Programs (BSc & BA)',
+    content: `Undergraduate Degree Offerings (3 Years Full-Time / 4 Years with Foundation):
+1. BSc (Hons) Computer Science: Accredited by the British Computer Society (BCS). Covers full-stack software development, AI & machine learning, distributed cloud systems, cybersecurity, and algorithms.
+2. BA (Hons) Business Management: Covers global strategic management, financial analysis, marketing strategies, entrepreneurship, and organizational leadership.
+3. BSc (Hons) Psychology with Counselling Skills: Accredited by the British Psychological Society (BPS). Focuses on cognitive neuroscience, developmental psychology, mental health ethics, and therapeutic counselling skills.
+4. BA (Hons) Accounting and Finance: Dual-accredited by ACCA, CIMA, and ICAEW, providing major exemptions from professional examinations.
+5. BA (Hons) Advertising, PR and Branding: Digital brand storytelling, public relations campaigns, consumer psychology, and multimedia production.
+6. LLB (Hons) Law: Qualifying English Law degree covering constitutional law, criminal law, international commercial arbitration, and human rights.`
   },
   {
     id: 'courses-postgrad',
     category: 'Academic Programs',
-    title: 'Postgraduate & Foundation Programs',
-    content: `Foundation & Postgraduate Offerings:
-- IFP (International Foundation Programme): 1-year preparatory pathway for students transitioning into British undergraduate degrees.
-- Advanced Entry and Top-Up Programs: Allows diploma and transfer students direct entry to Year 2 or Year 3.
-- MSc / MBA Postgraduate Degrees: Applied computing, advanced project management, international management, and data intelligence.`
+    title: 'Postgraduate, Top-Up & Foundation Programs',
+    content: `Postgraduate & Pathway Programs:
+- IFP (International Foundation Programme): 1-year pathway preparing international and local high school graduates for direct entry into UK undergraduate degrees.
+- Advanced Entry & Top-Up Degrees (Final Year Entry): For holders of diplomas, BTEC HNDs, or transfer credits seeking to complete their UK bachelor's degree in 1 to 2 years.
+- MSc / MBA Postgraduate Programs: Advanced applied computing, strategic corporate management, data intelligence, and executive leadership.`
   },
   {
     id: 'fees-structure',
     category: 'Tuition Fees & Payments',
-    title: 'Tuition Fees & Installment Options',
-    content: `International Tuition Fee Schedule:
-- IFP (International Foundation): Total £4,000 (£3,600 tuition + £400 admin). Deposit: £2,200 followed by two installments of £900.
-- BA Business Management / BSc Psychology / BA Accounting & Finance: Total £5,800 (£5,400 tuition + £400 admin). Deposit: £2,800 + two installments of £1,500.
-- BSc Computer Science: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400 + two installments of £1,500.
-- Law Programs (LLB): Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400 + two installments of £1,500.
-- Advanced Entry / Top-Up: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400 + two installments of £1,500.
-- Postgraduate (MSc/MBA): Total £7,420 (£7,020 tuition + £400 admin). Deposit: £3,820 + two installments of £1,800.`
+    title: 'International Tuition Fees, Admin Fees & Installment Schedules',
+    content: `Official Tuition Fee & Payment Plan Schedule:
+• IFP (Foundation): Total £4,000 (£3,600 tuition + £400 admin). Deposit: £2,200, followed by 2 installments of £900.
+• BA Business Management / BSc Psychology / BA Accounting & Finance: Total £5,800 (£5,400 tuition + £400 admin). Deposit: £2,800, followed by 2 installments of £1,500.
+• BSc Computer Science: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400, followed by 2 installments of £1,500.
+• LLB Law Programs: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400, followed by 2 installments of £1,500.
+• Advanced Entry & Top-Up: Total £6,400 (£6,000 tuition + £400 admin). Deposit: £3,400, followed by 2 installments of £1,500.
+• Postgraduate (MSc/MBA): Total £7,420 (£7,020 tuition + £400 admin). Deposit: £3,820, followed by 2 installments of £1,800.
+Payment Methods: Bank wire transfer, online portal payment, or campus finance desk credit/debit card.`
+  },
+  {
+    id: 'scholarships-aid',
+    category: 'Tuition Fees & Payments',
+    title: 'Scholarships, Bursaries & Early Payment Discounts',
+    content: `Financial Aid & Scholarships at MDX Mauritius:
+1. Academic Merit Scholarship: Up to 20% tuition fee reduction for students demonstrating outstanding A-Level, IB, or French Baccalaureate grades.
+2. Early Bird Discount: £300 discount on full upfront payment before term start.
+3. Sibling Bursary: 10% fee reduction for siblings enrolled concurrently.
+4. Sports & Leadership Bursaries: Awarded to regional/national athletes and youth leaders.`
   },
   {
     id: 'navigation-locations',
     category: 'Campus Navigation & Facilities',
-    title: 'Campus Coordinates and Key Locations',
-    content: `Key Campus Landmarks and Navigation GPS:
-- Archway & Main Entrance: Lat -20.280309, Lng 57.395255. Central campus access hub.
-- Admin Building: Lat -20.280553, Lng 57.395167. Houses registrar, student finance, admissions, and dean's office.
-- Campus Library & Study Pods: Lat -20.280528, Lng 57.394936. Open 8:30 AM to 7:00 PM on weekdays, providing quiet rooms, journals, and desktop terminals.
-- Print Pod: Lat -20.280528, Lng 57.394936 (Library wing). Color/B&W laser printing and scanning.
-- IT Support Desk: Lat -20.280791, Lng 57.395543. Assists with student portal, MDX email, eduroam WiFi, and software licenses.
-- Robotics & AI Lab: Lat -20.280829, Lng 57.395387. Equipped with embedded IoT kits, autonomous rovers, and GPU workstations.`
+    title: 'Campus Coordinates, Buildings & Navigation GPS',
+    content: `Campus Buildings and GPS Coordinates:
+• Archway & Main Entrance: Lat -20.280309, Lng 57.395255. Primary access point, security gate, and visitor check-in.
+• Admin Building: Lat -20.280553, Lng 57.395167. Houses the Registrar, Admissions Office, Student Finance, and Dean's Office.
+• Campus Library & Study Pods: Lat -20.280528, Lng 57.394936. Open 8:00 AM to 7:00 PM on weekdays. Features silent reading pods, group study rooms, desktop terminals, and book borrowing.
+• Print Pod: Lat -20.280528, Lng 57.394936 (within Library Wing). High-speed multi-function photocopiers, scanning, and color printing.
+• IT Support Desk: Lat -20.280791, Lng 57.395543. Walk-in helpdesk for student portal access, campus WiFi (Eduroam), software licenses, and hardware diagnostics.
+• Robotics & AI Lab: Lat -20.280829, Lng 57.395387. Equipped with autonomous robotic kits, IoT sensor stations, Raspberry Pi / Arduino benches, and high-performance GPU workstations.
+• Cafeteria & Student Hub: Lat -20.280650, Lng 57.395420. Serving hot meals, snacks, coffee, and providing indoor recreation (table tennis, foosball, lounge).
+• Outdoor Amphitheatre: Central quad for student assemblies, cultural showcases, and guest keynote lectures.`
   },
   {
     id: 'appointments-scheduling',
-    category: 'Student Services & Appointments',
-    title: 'Advisory and Faculty Appointment Booking',
-    content: `Students can book one-on-one appointments with campus staff:
-1. Admissions & Visa Advisory: Inquiries regarding student visa endorsements, CAS letters, and international transcripts.
-2. Academic Tutoring & Program Coordinators: Degree planning, coursework feedback, and academic guidance.
-3. Career Services & Internships: CV workshops, placement opportunities, and employer networking.
-4. Student Wellness & Counselling: Confidential student counseling and disability support.
-Appointments can be booked directly through the AI Campus Assistant with date and time specification.`
+    category: 'Student Services',
+    title: 'Advisory, Faculty & Staff Appointment Booking',
+    content: `Students can schedule one-on-one appointments across key campus departments:
+1. Admissions & Visa Advisory: Student visas, CAS statements, enrollment confirmation, document attestation.
+2. Program Coordinators & Lecturers: Academic guidance, thesis supervision, coursework feedback, module selection.
+3. Student Finance: Tuition fee installment plans, receipts, and sponsorship letters.
+4. Career & Placement Services: Resume/CV review, internship applications, mock interviews, and industry networking.
+5. Wellness & Counseling: Confidential psychological counseling, stress management, and disability accommodations.`
+  },
+  {
+    id: 'student-clubs-events',
+    category: 'Campus Life & Events',
+    title: 'Clubs, Societies & Annual Campus Events',
+    content: `Student Life, Clubs & Major Campus Events:
+• Computing & Tech Club: Hosts annual 48-hour hackathons, competitive programming contests, and AI workshops.
+• Business & Entrepreneurship Society: Business pitch competitions, guest industry speakers, and startup incubation.
+• Law Society: Organizes mock trial court competitions (mooting) and visits to the Supreme Court of Mauritius.
+• Sports Club: Football, badminton, basketball tournaments, and cross-country runs.
+• Major Annual Events:
+  - Orientation Week: Welcome fairs, campus tours, icebreakers, and club sign-ups.
+  - TechFest & Innovation Expo: Student showcase of software and robotics projects.
+  - Cultural Day: Celebrating international diversity with traditional cuisine, music, and attire.
+  - Career Fair: Connecting students with top multinational employers across Mauritius and the Indian Ocean.`
   },
   {
     id: 'admissions-timeline',
     category: 'Academic Calendar',
-    title: 'Intakes and Academic Calendar',
-    content: `Middlesex University Mauritius runs two primary intakes:
-- October / Autumn Intake: Major intake for all undergraduate and postgraduate degrees.
-- February / Spring Intake: Selected undergraduate programs, top-up pathways, and postgraduate certificates.
-Applications remain open year-round for international students with rolling review.`
+    title: 'Intakes, Term Dates & Academic Calendar',
+    content: `Academic Calendar & Intakes:
+• October Intake (Autumn Semester): Primary intake for all undergraduate, postgraduate, and foundation degrees. Classes commence early October.
+• February Intake (Spring Semester): Mid-year entry for select degrees, top-up programs, and postgraduates.
+• Exam Periods: January (Semester 1 exams) and May/June (Semester 2 exams).
+• Holidays: Christmas/New Year recess, Independence Day (March 12), and summer vacation (July - September).`
+  },
+  {
+    id: 'accommodation-transport',
+    category: 'Campus Services',
+    title: 'Student Accommodation & Campus Shuttle Services',
+    content: `Housing & Daily Commute:
+• Student Housing: Approved student residences in Flic-en-Flac and Cascavelle with 24/7 security, WiFi, shared kitchens, and laundry facilities.
+• Campus Shuttle Bus: Complimentary university shuttle buses operate between Flic-en-Flac beach residences, Quatre Bornes, Rose Hill, and the campus.
+• Public Transit: Easy access via public buses along the Cascavelle / Black River Coastal road.`
+  },
+  {
+    id: 'study-tips-support',
+    category: 'Academic Skills',
+    title: 'Study Planning, Academic Writing & Exam Preparation',
+    content: `Academic Success Guidelines:
+• Study Planning: Recommended 25-50 minute Pomodoro intervals with 5-10 minute rest periods. Allocate 15-20 hours weekly for independent study outside lectures.
+• Harvard Referencing: Mandatory referencing format for all coursework essays and dissertations.
+• Academic Writing Support: Weekly drop-in clinics at the Library for essay structuring, literature reviews, and critical analysis.
+• Extension Requests: Extenuating circumstances (deferrals) must be lodged with medical evidence within 7 days via the student portal.`
   }
 ];
 
@@ -110,7 +162,7 @@ campusLocations.forEach((loc, index) => {
     id: `location-${index}`,
     category: 'Campus Navigation',
     title: `Location: ${loc.LocationName}`,
-    content: `Campus Location "${loc.LocationName}" is located at GPS coordinates Latitude: ${loc.Coordinates.lat}, Longitude: ${loc.Coordinates.lng}. Accessible via the main campus concourse.`
+    content: `Campus Landmark: "${loc.LocationName}". Located at Latitude: ${loc.Coordinates.lat}, Longitude: ${loc.Coordinates.lng}. Accessible directly from the central campus walkway.`
   });
 });
 
@@ -118,13 +170,14 @@ internationalFees.forEach((fee, index) => {
   campusKnowledgeCorpus.push({
     id: `fee-detail-${index}`,
     category: 'Tuition Fees',
-    title: `Fees for ${fee.Program}`,
-    content: `Program: ${fee.Program}. Tuition: ${fee.TuitionFees}. Admin Fee: ${fee.AdminFees}. Full Payment: ${fee.FullPayment}. Installment Plan: Non-refundable deposit ${fee.InstallmentNonRefundableDeposit}, followed by installments of ${Array.isArray(fee.Installment) ? fee.Installment.join(' and ') : fee.Installment}.`
+    title: `Tuition Fees for ${fee.Program}`,
+    content: `Program: ${fee.Program}. Tuition Fee: ${fee.TuitionFees}. Administrative Fee: ${fee.AdminFees}. Total Full Payment: ${fee.FullPayment}. Installment Plan: Non-refundable deposit ${fee.InstallmentNonRefundableDeposit}, followed by 2 equal installments of ${Array.isArray(fee.Installment) ? fee.Installment.join(' and ') : fee.Installment}.`
   });
 });
 
-// TF-IDF style Vector Retrieval for RAG Pipeline
+// TF-IDF Semantic Vector Retrieval for RAG Pipeline
 function tokenize(text) {
+  if (!text) return [];
   return text
     .toLowerCase()
     .replace(/[^\w\s£$-]/g, ' ')
@@ -135,7 +188,8 @@ function tokenize(text) {
 const STOP_WORDS = new Set([
   'the', 'is', 'at', 'which', 'on', 'a', 'an', 'and', 'or', 'to', 'in', 'of', 'for', 'with',
   'as', 'by', 'that', 'this', 'it', 'from', 'be', 'are', 'was', 'were', 'has', 'have', 'had',
-  'can', 'could', 'should', 'would', 'i', 'you', 'he', 'she', 'they', 'we', 'me', 'my'
+  'can', 'could', 'should', 'would', 'i', 'you', 'he', 'she', 'they', 'we', 'me', 'my', 'what',
+  'how', 'when', 'who', 'where', 'why', 'tell', 'show', 'give', 'about', 'some', 'any'
 ]);
 
 function computeIDF(corpus) {
@@ -179,7 +233,11 @@ const docVectors = campusKnowledgeCorpus.map(doc => {
   };
 });
 
-function retrieveRelevantContexts(query, topK = 3) {
+function retrieveRelevantContexts(query, topK = 4) {
+  if (!query || typeof query !== 'string') {
+    return campusKnowledgeCorpus.slice(0, topK);
+  }
+
   const queryTokens = tokenize(query);
   if (queryTokens.length === 0) {
     return campusKnowledgeCorpus.slice(0, topK).map(doc => ({ ...doc, score: 0.1 }));
@@ -195,14 +253,13 @@ function retrieveRelevantContexts(query, topK = 3) {
       }
     });
 
-    // Keyword match boost
     let boost = 0;
     const lowerQuery = query.toLowerCase();
     if (doc.title.toLowerCase().includes(lowerQuery) || lowerQuery.includes(doc.title.toLowerCase())) {
-      boost += 0.5;
+      boost += 0.6;
     }
     if (doc.category.toLowerCase().includes(lowerQuery)) {
-      boost += 0.3;
+      boost += 0.35;
     }
 
     const similarity = (dotProduct / (queryNorm * doc.norm)) + boost;
@@ -219,39 +276,9 @@ function retrieveRelevantContexts(query, topK = 3) {
   return scoredDocs.slice(0, topK);
 }
 
-// Prompt Engineering Template for RAG Pipeline
-function formatRAGPrompt(userQuery, contexts, history = [], agentRole = 'Campus Assistant') {
-  const contextStr = contexts
-    .map((c, i) => `[Context Chunk ${i + 1} - ${c.title} (${c.category})]:\n${c.content}`)
-    .join('\n\n');
-
-  const historyStr = history
-    .slice(-4)
-    .map(h => `${h.sender === 'user' ? 'User' : 'Assistant'}: ${h.text}`)
-    .join('\n');
-
-  return {
-    systemPrompt: `You are the AI Campus Assistant for Middlesex University Mauritius, specialized as the ${agentRole}.
-Your mission is to provide helpful, welcoming, accurate, and context-grounded guidance to students, applicants, and visitors.
-Use the provided Context Chunks from the campus knowledge base to answer questions with precision.
-If fees or installment plans are discussed, format them clearly.
-If campus navigation or locations are asked, mention landmarks and directions.
-Tone: Professional, academic, warm, and concise.`,
-    userPrompt: `Here is the relevant campus knowledge retrieved by the RAG pipeline:
----
-${contextStr}
----
-${historyStr ? `Recent Conversation History:\n${historyStr}\n---\n` : ''}
-User Query: "${userQuery}"
-
-Provide a comprehensive, accurate response based on the campus knowledge above.`
-  };
-}
-
 module.exports = {
   campusKnowledgeCorpus,
   internationalFees,
   campusLocations,
-  retrieveRelevantContexts,
-  formatRAGPrompt
+  retrieveRelevantContexts
 };

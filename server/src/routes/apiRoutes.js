@@ -1,25 +1,79 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const pdfParse = require('pdf-parse');
 const { runAgentPipeline } = require('../agents/agentOrchestrator');
 const { retrieveRelevantContexts, campusLocations, internationalFees } = require('../rag/knowledgeBase');
 const AppointmentModel = require('../models/Appointment');
+const ConversationModel = require('../models/Conversation');
 const { sendNotification, getRecentNotifications, broadcast } = require('../services/notificationService');
 const { getProviderStatus, setProvider } = require('../services/llmService');
 const { isConnected } = require('../models/db');
 
-// Main Chat Endpoint (HTTP)
+// Multer memory storage for file uploads
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
+});
+
+// ==========================================
+// 1. CHAT ENDPOINT (Natural Conversations + Tool Calling)
+// ==========================================
 router.post('/chat', async (req, res) => {
   try {
-    const { message, conversationHistory = [], provider } = req.body;
+    const {
+      message,
+      conversationId,
+      conversationHistory = [],
+      provider,
+      apiKey,
+      attachment
+    } = req.body;
+
     if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Message is required.' });
+      return res.status(400).json({ error: 'Message text is required.' });
     }
 
     const result = await runAgentPipeline({
       query: message,
       conversationHistory,
-      provider: provider || 'hybrid'
+      provider: provider || 'hybrid',
+      apiKey,
+      attachment
     });
+
+    // Auto-save message turn to conversation history if conversationId is provided
+    if (conversationId) {
+      try {
+        const userMsg = {
+          id: 'user-' + Date.now(),
+          sender: 'user',
+          text: message,
+          timestamp: new Date(),
+          attachment: attachment || null
+        };
+        const botMsg = {
+          id: 'bot-' + (Date.now() + 1),
+          sender: 'bot',
+          text: result.reply,
+          timestamp: new Date(),
+          agent: result.agent || 'Campus Assistant',
+          model: result.model || 'Campus AI',
+          richCard: result.richCard || null,
+          steps: result.steps || []
+        };
+
+        const existing = await ConversationModel.findById(conversationId);
+        const updatedMsgs = existing && existing.messages ? [...existing.messages, userMsg, botMsg] : [userMsg, botMsg];
+        const title = existing && existing.title && existing.title !== 'New Conversation'
+          ? existing.title
+          : message.slice(0, 38).trim() + (message.length > 38 ? '...' : '');
+
+        await ConversationModel.updateMessages(conversationId, updatedMsgs, title);
+      } catch (saveErr) {
+        console.warn('Could not auto-save conversation turn:', saveErr.message);
+      }
+    }
 
     res.json({
       success: true,
@@ -31,19 +85,120 @@ router.post('/chat', async (req, res) => {
   }
 });
 
-// Diagnostic RAG Retrieval Query
-router.get('/rag/query', (req, res) => {
-  const query = req.query.q || '';
-  const topK = parseInt(req.query.k, 10) || 4;
-  const contexts = retrieveRelevantContexts(query, topK);
-  res.json({
-    query,
-    count: contexts.length,
-    contexts
-  });
+// ==========================================
+// 2. CONVERSATION SESSIONS (Memory & Past Chats)
+// ==========================================
+router.get('/conversations', async (req, res) => {
+  try {
+    const conversations = await ConversationModel.findAll();
+    res.json({ success: true, conversations });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
-// Appointments
+router.get('/conversations/:id', async (req, res) => {
+  try {
+    const conversation = await ConversationModel.findById(req.params.id);
+    if (!conversation) {
+      return res.status(404).json({ success: false, error: 'Conversation not found.' });
+    }
+    res.json({ success: true, conversation });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.post('/conversations', async (req, res) => {
+  try {
+    const { title, conversationId, messages } = req.body;
+    const conv = await ConversationModel.create({
+      conversationId,
+      title: title || 'New Conversation',
+      messages: messages || []
+    });
+    res.json({ success: true, conversation: conv });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.put('/conversations/:id', async (req, res) => {
+  try {
+    const { messages, title } = req.body;
+    let updated;
+    if (messages) {
+      updated = await ConversationModel.updateMessages(req.params.id, messages, title);
+    } else if (title) {
+      updated = await ConversationModel.updateTitle(req.params.id, title);
+    }
+    res.json({ success: true, conversation: updated });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.delete('/conversations/:id', async (req, res) => {
+  try {
+    await ConversationModel.delete(req.params.id);
+    res.json({ success: true, message: 'Conversation deleted.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+router.delete('/conversations', async (req, res) => {
+  try {
+    await ConversationModel.clearAll();
+    res.json({ success: true, message: 'All conversations cleared.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ==========================================
+// 3. FILE & PDF UPLOADS (Document Summarization)
+// ==========================================
+router.post('/upload', upload.single('file'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: 'No file uploaded.' });
+    }
+
+    const { originalname, mimetype, buffer, size } = req.file;
+    let extractedText = '';
+    let pageCount = null;
+
+    if (mimetype === 'application/pdf' || originalname.toLowerCase().endsWith('.pdf')) {
+      const data = await pdfParse(buffer);
+      extractedText = data.text || '';
+      pageCount = data.numpages || 1;
+    } else {
+      // Plain text, markdown, json, csv
+      extractedText = buffer.toString('utf-8');
+    }
+
+    const wordCount = extractedText.split(/\s+/).filter(w => w.length > 0).length;
+
+    res.json({
+      success: true,
+      filename: originalname,
+      mimetype,
+      size,
+      pageCount,
+      wordCount,
+      text: extractedText,
+      preview: extractedText.slice(0, 500)
+    });
+  } catch (err) {
+    console.error('File parsing error:', err);
+    res.status(500).json({ success: false, error: 'Could not parse document: ' + err.message });
+  }
+});
+
+// ==========================================
+// 4. APPOINTMENT BOOKING & CALENDAR
+// ==========================================
 router.get('/appointments', async (req, res) => {
   try {
     const appointments = await AppointmentModel.find();
@@ -61,18 +216,18 @@ router.post('/appointments', async (req, res) => {
     }
 
     const appointment = await AppointmentModel.create({
-      studentName: studentName || 'Campus Visitor',
+      studentName: studentName || 'Campus Student',
       email: email || 'student@mdx.ac.mu',
       department,
-      purpose: purpose || 'Advisory Meeting',
+      purpose: purpose || 'Academic Advisory',
       dateTime,
       notes: notes || ''
     });
 
-    // Dispatch real-time WebSocket notification pipeline
+    // Broadcast real-time notification
     await sendNotification({
-      title: 'Appointment Booked',
-      message: `Confirmed meeting with ${department} on ${new Date(dateTime).toLocaleString()}`,
+      title: 'Appointment Confirmed',
+      message: `Meeting with ${department} confirmed for ${new Date(dateTime).toLocaleString()}`,
       type: 'success',
       agent: 'Academic Appointments Agent'
     });
@@ -83,7 +238,48 @@ router.post('/appointments', async (req, res) => {
   }
 });
 
-// Real-Time Notifications
+// Download .ics calendar file for an appointment
+router.get('/appointments/:id/ics', async (req, res) => {
+  try {
+    const list = await AppointmentModel.find();
+    const apt = list.find(a => (a._id && a._id.toString() === req.params.id) || a.id === req.params.id || a._id == req.params.id);
+    if (!apt) {
+      return res.status(404).send('Appointment not found');
+    }
+    const icsData = apt.icsData || AppointmentModel.generateICS({
+      title: `MDX Advisory: ${apt.department}`,
+      start: new Date(apt.dateTime),
+      end: new Date(new Date(apt.dateTime).getTime() + 45 * 60 * 1000),
+      details: apt.purpose,
+      location: 'Middlesex University Mauritius'
+    });
+
+    res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename="appointment-${apt._id}.ics"`);
+    res.send(icsData);
+  } catch (err) {
+    res.status(500).send('Error generating calendar file');
+  }
+});
+
+// ==========================================
+// 5. CAMPUS DATA & NOTIFICATIONS
+// ==========================================
+router.get('/locations', (req, res) => {
+  res.json({ success: true, locations: campusLocations });
+});
+
+router.get('/fees', (req, res) => {
+  res.json({ success: true, fees: internationalFees });
+});
+
+router.get('/rag/query', (req, res) => {
+  const query = req.query.q || '';
+  const topK = parseInt(req.query.k, 10) || 4;
+  const contexts = retrieveRelevantContexts(query, topK);
+  res.json({ query, count: contexts.length, contexts });
+});
+
 router.get('/notifications', async (req, res) => {
   try {
     const notifications = await getRecentNotifications();
@@ -106,24 +302,15 @@ router.post('/notifications', async (req, res) => {
   }
 });
 
-// Campus Locations & Fees
-router.get('/locations', (req, res) => {
-  res.json({ success: true, locations: campusLocations });
-});
-
-router.get('/fees', (req, res) => {
-  res.json({ success: true, fees: internationalFees });
-});
-
-// System Status & LLM Provider Settings
+// System telemetry & provider setting
 router.get('/config', (req, res) => {
   res.json({
     success: true,
     mongoConnected: isConnected(),
     llm: getProviderStatus(),
     endpoints: {
-      ws: 'ws://localhost:5000/ws',
-      rest: 'http://localhost:5000/api'
+      ws: '/ws',
+      rest: '/api'
     }
   });
 });

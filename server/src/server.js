@@ -80,13 +80,22 @@ wss.on('connection', (ws, req) => {
       }
 
       if (parsed.type === 'chat') {
-        const { message, conversationHistory = [], provider = 'hybrid' } = parsed;
+        const {
+          message,
+          conversationHistory = [],
+          provider = 'hybrid',
+          apiKey = null,
+          attachment = null,
+          conversationId = null
+        } = parsed;
 
         // Stream real-time agent execution steps via WebSocket
         const result = await runAgentPipeline({
           query: message,
           conversationHistory,
           provider,
+          apiKey,
+          attachment,
           onAgentStep: (step) => {
             ws.send(JSON.stringify({
               event: 'agent:step',
@@ -95,12 +104,47 @@ wss.on('connection', (ws, req) => {
           }
         });
 
+        // Auto-save to conversation history if conversationId provided
+        if (conversationId) {
+          try {
+            const ConversationModel = require('./models/Conversation');
+            const userMsg = {
+              id: 'user-' + Date.now(),
+              sender: 'user',
+              text: message,
+              timestamp: new Date(),
+              attachment: attachment || null
+            };
+            const botMsg = {
+              id: 'bot-' + (Date.now() + 1),
+              sender: 'bot',
+              text: result.reply,
+              timestamp: new Date(),
+              agent: result.agent || 'Campus Assistant',
+              model: result.model || 'Campus AI',
+              richCard: result.richCard || null,
+              steps: result.steps || []
+            };
+
+            const existing = await ConversationModel.findById(conversationId);
+            const updatedMsgs = existing && existing.messages ? [...existing.messages, userMsg, botMsg] : [userMsg, botMsg];
+            const title = existing && existing.title && existing.title !== 'New Conversation'
+              ? existing.title
+              : message.slice(0, 38).trim() + (message.length > 38 ? '...' : '');
+
+            await ConversationModel.updateMessages(conversationId, updatedMsgs, title);
+          } catch (e) {
+            console.warn('WS conversation auto-save error:', e.message);
+          }
+        }
+
         // Send final response
         ws.send(JSON.stringify({
           event: 'chat:response',
           payload: {
             ...result,
-            userMessage: message
+            userMessage: message,
+            conversationId
           }
         }));
       }
